@@ -1,0 +1,193 @@
+{
+  "quiz_title": "Cybersecurity & Computer Science Fundamentals Assessment",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "You delete a file and empty the Recycle Bin. Has the file completely disappeared from the hard drive?",
+      "options": [
+        "Yes, once deleted it is gone forever and cannot be recovered.",
+        "Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",
+        "Only if the storage device is a Solid State Drive (SSD).",
+        "Only if you also delete the file from Google Drive."
+      ],
+      "correct_answer": "Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",
+      "explanation": "Emptying the Recycle Bin only removes the file reference in the file system table. The actual data remains intact on the storage sectors until overwritten by new files."
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "question": "You open your browser in Incognito/Private mode to search for information. Who CANNOT see your browsing history?",
+      "options": [
+        "Your Internet Service Provider (ISP)",
+        "Your company or school network administrator",
+        "Someone else using the same computer afterward",
+        "The website you are visiting"
+      ],
+      "correct_answer": "Someone else using the same computer afterward",
+      "explanation": "Private browsing mode only deletes local session data (history, cookies, forms) on the client machine once closed. It does not conceal web activity from network admins, ISPs, or target servers."
+    },
+    {
+      "id": 3,
+      "type": "multiple_choice",
+      "question": "You turn on a VPN while browsing. Does this mean no one can see what you are doing online, not even the VPN provider?",
+      "options": [
+        "True, a VPN makes you completely anonymous to everyone on the internet.",
+        "False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.",
+        "True, a VPN encrypts data so that nobody can see it, including the VPN service provider.",
+        "False, a VPN is only used to change your IP address for streaming regional media."
+      ],
+      "correct_answer": "False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.",
+      "explanation": "A VPN establishes an encrypted tunnel between your device and the VPN server, shielding traffic from local eavesdroppers and ISPs. However, traffic exiting the VPN server is visible to the VPN operator."
+    },
+    {
+      "id": 4,
+      "type": "multiple_choice",
+      "question": "A website asks for your password, then sends a verification code to your email account (which uses the exact same password). Is this true two-factor authentication (2FA)?",
+      "options": [
+        "Yes, because authentication consists of two sequential verification steps.",
+        "No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.",
+        "Yes, because email verification is managed by an independent third-party provider.",
+        "No, because email verification can never be considered an authentication mechanism."
+      ],
+      "correct_answer": "No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.",
+      "explanation": "True 2FA requires two distinct factors (e.g., knowledge and possession). When the email and the service share the identical password, an attacker who obtains that single password can compromise both stages."
+    },
+    {
+      "id": 5,
+      "type": "multiple_choice",
+      "question": "A company has a firewall installed. An employee still gets infected with malware by opening a malicious email attachment. Did the firewall fail?",
+      "options": [
+        "Yes, firewalls are designed to detect and block all cyber threats.",
+        "No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.",
+        "Yes, this security incident proves the firewall is defective.",
+        "No, firewalls are intended strictly to replace antivirus software."
+      ],
+      "correct_answer": "No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.",
+      "explanation": "Traditional firewalls filter incoming and outgoing network packets according to IP addresses and port rules. They do not inspect file contents inside permitted mail channels or stop local execution by users."
+    },
+    {
+      "id": 6,
+      "type": "multiple_choice",
+      "question": "An online service you use announces a data breach. You immediately change your password for that service. Are you safe now?",
+      "options": [
+        "Yes, updating the password on the breached service is completely sufficient.",
+        "Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.",
+        "No, you must permanently delete the compromised account.",
+        "No, you must also change your primary email address to regain security."
+      ],
+      "correct_answer": "Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.",
+      "explanation": "Stolen credentials are often loaded into automated credential-stuffing tools to breach other web accounts sharing the identical password."
+    },
+    {
+      "id": 7,
+      "type": "multiple_choice",
+      "question": "A website address begins with 'https://' and displays a padlock icon. Does this guarantee that the website is completely safe and trustworthy?",
+      "options": [
+        "Yes, the padlock confirms that the website owner is fully legitimate and verified.",
+        "No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.",
+        "Yes, HTTPS technology automatically scans and blocks all phishing scripts and malware.",
+        "No, HTTPS is an obsolete protocol that provides no active security benefits."
+      ],
+      "correct_answer": "No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.",
+      "explanation": "HTTPS ensures encryption during transport between client and server, protecting credentials against local sniffing. However, attackers can obtain SSL/TLS certificates for fraudulent or phishing sites."
+    },
+    {
+      "id": 8,
+      "type": "multiple_choice",
+      "question": "You receive an account verification email appearing to be from PayPal with authentic logos and professional formatting, sent from 'support@paypa1.com'. What is the most suspicious indicator that this is phishing?",
+      "options": [
+        "The inclusion of an authentic PayPal logo",
+        "The professional layout and formal wording",
+        "The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1')",
+        "The request being delivered via an electronic email service"
+      ],
+      "correct_answer": "The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1')",
+      "explanation": "Typosquatting by replacing letters with similar numerals (such as '1' instead of 'l') is a classic phishing tactic designed to deceive recipients into mistaking a fake domain for a legitimate brand."
+    },
+    {
+      "id": 9,
+      "type": "short_answer",
+      "question": "What does a zip bomb do to a target computer, and is it classified as a cyber attack?",
+      "correct_answer": "It temporarily crashes or freezes the computer; Yes, it is considered a cyber attack.",
+      "explanation": "Grading criteria: Must state that it crashes or freezes the computer/laptop (exhausting disk or CPU resources) and answer 'Yes' to cyber attack classification."
+    },
+    {
+      "id": 10,
+      "type": "short_answer",
+      "question": "In the Python programming language, what are the three fundamental properties of a set?",
+      "correct_answer": "Unordered, unchangeable, unindexed",
+      "explanation": "Grading criteria: Must include all 3 exact technical attributes: 'unordered', 'unchangeable', and 'unindexed'."
+    },
+    {
+      "id": 11,
+      "type": "short_answer",
+      "question": "What is the primary purpose of a firewall in a network security system?",
+      "correct_answer": "To act as a digital barrier inspecting incoming and outgoing traffic and blocking unauthorized access based on security rules.",
+      "explanation": "Grading criteria: Keywords required: barrier/filter between networks, inspecting incoming/outgoing traffic, and blocking malicious/unauthorized access according to security rules."
+    },
+    {
+      "id": 12,
+      "type": "short_answer",
+      "question": "What is a Trojan attack, and how does it differ fundamentally from a computer virus?",
+      "correct_answer": "A Trojan disguises itself as a legitimate application and does not replicate automatically, whereas a virus self-replicates.",
+      "explanation": "Grading criteria: Must capture both: masquerading as legitimate software and the inability to self-replicate (requiring manual execution) compared to auto-replicating viruses."
+    },
+    {
+      "id": 13,
+      "type": "short_answer",
+      "question": "Explain the primary difference between symmetric key encryption and asymmetric key encryption regarding key usage.",
+      "correct_answer": "Symmetric encryption uses a single shared key for both encryption and decryption, whereas asymmetric encryption uses a public-private key pair.",
+      "explanation": "Grading criteria: Must contrast the use of a single shared secret key (symmetric) with a public and private key pair (asymmetric)."
+    },
+    {
+      "id": 14,
+      "type": "short_answer",
+      "question": "Which network protocol is primarily responsible for assigning dynamic IP addresses to devices on a local network?",
+      "correct_answer": "DHCP (Dynamic Host Configuration Protocol)",
+      "explanation": "Grading criteria: Accept 'DHCP' or the full name 'Dynamic Host Configuration Protocol'."
+    },
+    {
+      "id": 15,
+      "type": "short_answer",
+      "question": "What does the acronym HTML stand for?",
+      "correct_answer": "HyperText Markup Language",
+      "explanation": "Grading criteria: Exact string: 'HyperText Markup Language' (case-insensitive)."
+    },
+    {
+      "id": 16,
+      "type": "short_answer",
+      "question": "What is the role of a payload in a Trojan attack?",
+      "correct_answer": "The payload is the actual malicious code that executes harmful actions or grants unauthorized control on the infected system.",
+      "explanation": "Grading criteria: Must identify payload as the actual malicious code/program executing destructive tasks, installing shells, or establishing administrative backdoors."
+    },
+    {
+      "id": 17,
+      "type": "short_answer",
+      "question": "How many layers are in the standard TCP/IP protocol suite?",
+      "correct_answer": "4 layers",
+      "explanation": "Grading criteria: Accept '4' or '4 layers' (Application, Transport, Internet, Network Access/Link Layer)."
+    },
+    {
+      "id": 18,
+      "type": "short_answer",
+      "question": "What is the fundamental difference between phishing and pharming?",
+      "correct_answer": "Phishing tricks users via fraudulent messages to steal confidential information, while pharming silently redirects users from legitimate addresses to spoofed websites.",
+      "explanation": "Grading criteria: Phishing uses social engineering messages (email, SMS, phone calls); pharming manipulates DNS or web routing to redirect traffic automatically."
+    },
+    {
+      "id": 19,
+      "type": "short_answer",
+      "question": "Decrypt the ciphertext 'uftbxogdqlzhchmg' using a Caesar cipher shifted one character backward (shift -1).",
+      "correct_answer": "vgucyphermaidinh",
+      "explanation": "Grading criteria: Exact match required: 'vgucyphermaidinh'."
+    },
+    {
+      "id": 20,
+      "type": "short_answer",
+      "question": "What is the German noun for 'library'?",
+      "correct_answer": "Bibliothek",
+      "explanation": "Grading criteria: Accept 'Bibliothek' or 'bibliothek'."
+    }
+  ]
+}
