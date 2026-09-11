@@ -75,8 +75,8 @@ for n in range(1, 5):
 print(count)",,multiple choice,3,6,2,4,2,
 A page uses HTTPS. Which conclusion is justified by HTTPS alone?,,multiple choice,The connection's traffic is encrypted,The website's downloads are harmless,The website's owner is trustworthy,The website's information is accurate,The connection's traffic is encrypted,
 "At 80 Mb/s, how many seconds are needed to transfer 40 MB? Use decimal units and ignore overhead.",,multiple choice,8 seconds,0.5 seconds,40 seconds,4 seconds,4 seconds,
-What does RAM stand for?,,short_answer,,,,,Random Access Memory,
-What does ROM stand for?,,short_answer,,,,,Read-Only Memory,
+What does RAM stand for?,,short_answer,,,,,Random Access Memory,true
+What does ROM stand for?,,short_answer,,,,,Read-Only Memory,true
 "How many keys does a traditional full-size US ANSI Windows keyboard have, excluding extra media or macro keys?",,short_answer,,,,,104,
 Is HTML a programming language? Name its language category.,,short_answer,,,,,No. It is a markup language.,
 What type of language is CSS?,,short_answer,,,,,Style sheet language.,

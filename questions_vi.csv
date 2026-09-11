@@ -75,8 +75,8 @@ for n in range(1, 5):
 print(count)",,multiple choice,3,6,2,4,2,
 Một trang web sử dụng HTTPS. Chỉ riêng việc sử dụng HTTPS cho phép kết luận điều nào sau đây?,,multiple choice,Lưu lượng của kết nối được mã hóa,Các tệp tải xuống từ trang web đều vô hại,Chủ sở hữu trang web đáng tin cậy,Thông tin trên trang web là chính xác,Lưu lượng của kết nối được mã hóa,
 "Ở tốc độ 80 Mb/s, cần bao nhiêu giây để truyền 40 MB dữ liệu? Dùng đơn vị thập phân và bỏ qua phần dữ liệu phụ trợ (overhead).",,multiple choice,8 giây,0.5 giây,40 giây,4 giây,4 giây,
-RAM là viết tắt của cụm từ nào?,,short_answer,,,,,Random Access Memory,
-ROM là viết tắt của cụm từ nào?,,short_answer,,,,,Read-Only Memory,
+RAM là viết tắt của cụm từ nào?,,short_answer,,,,,Random Access Memory,true
+ROM là viết tắt của cụm từ nào?,,short_answer,,,,,Read-Only Memory,true
 "Một bàn phím Windows đầy đủ truyền thống theo bố cục US ANSI có bao nhiêu phím, không tính các phím đa phương tiện hoặc macro bổ sung?",,short_answer,,,,,104,
 HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ngữ của HTML.,,short_answer,,,,,Không. HTML là ngôn ngữ đánh dấu.,
 CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,Ngôn ngữ định kiểu.,

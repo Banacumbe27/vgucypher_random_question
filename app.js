@@ -126,8 +126,8 @@ for n in range(1, 5):
 print(count)",,multiple choice,3,3,6,6,2,2,4,4,2,2,
 A page uses HTTPS. Which conclusion is justified by HTTPS alone?,Một trang web sử dụng HTTPS. Chỉ riêng việc sử dụng HTTPS cho phép kết luận điều nào sau đây?,,multiple choice,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,The website's downloads are harmless,Các tệp tải xuống từ trang web đều vô hại,The website's owner is trustworthy,Chủ sở hữu trang web đáng tin cậy,The website's information is accurate,Thông tin trên trang web là chính xác,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,
 "At 80 Mb/s, how many seconds are needed to transfer 40 MB? Use decimal units and ignore overhead.","Ở tốc độ 80 Mb/s, cần bao nhiêu giây để truyền 40 MB dữ liệu? Dùng đơn vị thập phân và bỏ qua phần dữ liệu phụ trợ (overhead).",,multiple choice,8 seconds,8 giây,0.5 seconds,0.5 giây,40 seconds,40 giây,4 seconds,4 giây,4 seconds,4 giây,
-What does RAM stand for?,RAM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Random Access Memory,Random Access Memory,
-What does ROM stand for?,ROM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Read-Only Memory,Read-Only Memory,
+What does RAM stand for?,RAM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Random Access Memory,Random Access Memory,true
+What does ROM stand for?,ROM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Read-Only Memory,Read-Only Memory,true
 "How many keys does a traditional full-size US ANSI Windows keyboard have, excluding extra media or macro keys?","Một bàn phím Windows đầy đủ truyền thống theo bố cục US ANSI có bao nhiêu phím, không tính các phím đa phương tiện hoặc macro bổ sung?",,short_answer,,,,,,,,,104,104,
 Is HTML a programming language? Name its language category.,HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ngữ của HTML.,,short_answer,,,,,,,,,No. It is a markup language.,Không. HTML là ngôn ngữ đánh dấu.,
 What type of language is CSS?,CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,,,,,Style sheet language.,Ngôn ngữ định kiểu.,
@@ -1408,10 +1408,17 @@ function checkDirectAnswerMatch(val, q) {
     const valWithout0b = valWithoutParens.startsWith('0b') ? valWithoutParens.slice(2) : valWithoutParens;
     // Strip all spaces for condensed comparison like '[1,2]' vs '[1, 2]' or 'type error' vs 'typeerror'
     const spaceLessVal = valWithout0b.replace(/\s+/g, '');
+    const cleanHyphenVal = valWithout0b.replace(/[-\s]+/g, '');
 
     for (const raw of rawList) {
         const norm = normalizeDirectAnswer(raw);
-        if (norm) accepted.add(norm);
+        if (norm) {
+            accepted.add(norm);
+            if (norm.includes('-')) {
+                accepted.add(norm.replace(/-/g, ' '));
+                accepted.add(norm.replace(/-/g, ''));
+            }
+        }
 
         // Strip trailing parens from reference e.g. "print()" -> "print"
         if (norm.endsWith('()')) {
@@ -1437,6 +1444,20 @@ function checkDirectAnswerMatch(val, q) {
         }
 
         const spaceLessNorm = norm.replace(/\s+/g, '');
+        const cleanHyphenNorm = norm.replace(/[-\s]+/g, '');
+
+        // RAM / ROM aliases & variations (support "read only memory", "read-only memory", etc.)
+        if (cleanHyphenNorm === 'readonlymemory') {
+            accepted.add('read only memory');
+            accepted.add('read-only memory');
+            accepted.add('readonly memory');
+        }
+        if (cleanHyphenNorm === 'randomaccessmemory') {
+            accepted.add('random access memory');
+            accepted.add('random-access memory');
+            accepted.add('randomaccess memory');
+        }
+
         // Programming aliases
         if (spaceLessNorm === 'bool') {
             accepted.add('boolean');
@@ -1458,9 +1479,12 @@ function checkDirectAnswerMatch(val, q) {
 
         // Exact match with all spaces collapsed (e.g. '[1,2]' vs '[1, 2]', 'type error' vs 'typeerror')
         if (spaceLessVal === spaceLessNorm) return true;
+        // Exact match with all spaces and hyphens collapsed (e.g. "read only memory" vs "read-only memory")
+        if (cleanHyphenVal === cleanHyphenNorm) return true;
     }
 
-    return accepted.has(normVal) || accepted.has(valWithoutParens) || accepted.has(valWithout0b);
+    const hyphenSpaceVal = normVal.replace(/-/g, ' ');
+    return accepted.has(normVal) || accepted.has(hyphenSpaceVal) || accepted.has(valWithoutParens) || accepted.has(valWithout0b);
 }
 
 
