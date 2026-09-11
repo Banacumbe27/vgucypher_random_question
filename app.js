@@ -241,6 +241,70 @@ print(total)",,short_answer,,,,,,,,,6,6,
 "A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,No. IP connectivity works; name resolution may be failing.,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
 Can a language implementation both compile and interpret the same program? Briefly explain.,Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.","Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",`;
 
+// Comprehensive Short Hints Map for Questions (Bilingual)
+const QUESTION_HINTS = {
+    1: { en: "Think about the central 'brain' or processor executing instructions.", vi: "Bộ phận được coi là 'bộ não' trung tâm của máy tính." },
+    2: { en: "Volatile high-speed working memory that loses contents when powered down.", vi: "Bộ nhớ khả biến tốc độ cao lưu trữ dữ liệu tạm thời khi máy đang chạy." },
+    3: { en: "1 Byte = 2^3 bits.", vi: "1 Byte = 2^3 bit (lũy thừa 3 của 2)." },
+    4: { en: "Think of the internet's phonebook translating human-friendly names to IP addresses.", vi: "Danh bạ internet giúp chuyển đổi tên miền thân thiện thành địa chỉ IP." },
+    5: { en: "The core system software that manages hardware and software resources.", vi: "Phần mềm hệ thống cốt lõi quản lý phần cứng và tài nguyên máy tính." },
+    6: { en: "Solid State Drive uses flash memory chips instead of rotating magnetic disks.", vi: "Ổ thể rắn dùng chip nhớ flash thay vì đĩa từ quay cơ học." },
+    7: { en: "Base-2 numeral system uses only two distinct symbols.", vi: "Hệ cơ số 2 chỉ sử dụng đúng hai chữ số cơ bản." },
+    8: { en: "Whole numbers without fractional or decimal points.", vi: "Số nguyên không có phần thập phân thuộc kiểu dữ liệu này." },
+    9: { en: "The hash or octothorpe symbol.", vi: "Ký hiệu dấu thăng (#)." },
+    10: { en: "Enclosed in single, double, or triple quotation marks.", vi: "Được bao bọc bên trong dấu ngoặc kép hoặc ngoặc đơn." },
+    11: { en: "0*8 + 1*4 + 1*2 + 0*1 = 6.", vi: "0*8 + 1*4 + 1*2 + 0*1 = 6." },
+    12: { en: "Flash storage retains data non-volatily without power.", vi: "Bộ nhớ flash lưu trữ dữ liệu bền vững ngay cả khi tắt nguồn." },
+    13: { en: "The requester in the client-server architecture model.", vi: "Bên gửi yêu cầu trong mô hình máy khách - máy chủ." },
+    14: { en: "Four 8-bit octets between 0 and 255 separated by dots.", vi: "Gồm 4 số từ 0 đến 255 ngăn cách bởi dấu chấm." },
+    15: { en: "4 + 3 = 7.", vi: "Thực hiện gán tuần tự: 4 + 3 = 7." },
+    16: { en: "Operator precedence: multiplication (*) happens before addition (+).", vi: "Thứ tự ưu tiên toán tử: nhân (*) thực hiện trước cộng (+)." },
+    17: { en: "not True is False; True or False is True.", vi: "not True là False; True or False là True." },
+    18: { en: "Floor division (//) drops the fractional remainder.", vi: "Phép chia lấy phần nguyên (//) lược bỏ phần thập phân." },
+    19: { en: "Python lists use zero-based indexing: index 0 is first, index 1 is second.", vi: "Chỉ mục danh sách trong Python bắt đầu từ 0: index 1 là phần tử thứ hai." },
+    20: { en: "range(1, 4) produces 1, 2, 3: 1 + 2 + 3 = 6.", vi: "range(1, 4) sinh ra 1, 2, 3: tổng là 1 + 2 + 3 = 6." },
+    21: { en: "Variable assignment (b = a) copies the object reference, not the list itself.", vi: "Phép gán b = a tham chiếu đến cùng một danh sách trong bộ nhớ." },
+    22: { en: "Strings in Python are immutable; concatenation creates a new string without altering the original.", vi: "Chuỗi trong Python là bất biến; nối chuỗi tạo đối tượng mới chứ không sửa biến ban đầu." },
+    23: { en: "Floor division in Python rounds down towards negative infinity: -3.5 becomes -4.", vi: "Phép chia lấy phần nguyên luôn làm tròn xuống về phía âm vô cùng: -3.5 thành -4." },
+    24: { en: "Functions without an explicit return statement return None in Python.", vi: "Hàm không có lệnh return rõ ràng sẽ mặc định trả về None." },
+    25: { en: "Python does not implicitly coerce types for equality: int and str are never equal, but int and float are.", vi: "Python không tự ép kiểu chuỗi sang số để so sánh: int khác str, nhưng int có thể bằng float." },
+    26: { en: "Find the minimum n such that 2^n > 300: 2^8 = 256, 2^9 = 512.", vi: "Tìm n nhỏ nhất sao cho 2^n > 300: 2^8 = 256, 2^9 = 512." },
+    27: { en: "1111 (15) + 1 = 16 (10000 in binary); discarding the 5th bit leaves 0000.", vi: "1111 + 1 = 10000; giữ lại 4 bit cuối ta được 0000." },
+    28: { en: "Even numbers in range(1, 5) are 2 and 4 (count = 2).", vi: "Các số chẵn trong khoảng range(1, 5) là 2 và 4 (đếm được 2)." },
+    29: { en: "HTTPS encrypts the communication channel between client and server.", vi: "HTTPS mã hóa lưu lượng đường truyền giữa trình duyệt và máy chủ." },
+    30: { en: "40 MB = 320 Mb; 320 Mb / 80 Mb/s = 4 seconds.", vi: "40 MB = 320 Mb; 320 Mb / 80 Mb/s = 4 giây." },
+    31: { en: "Random Access Memory", vi: "Random Access Memory (Bộ nhớ truy xuất ngẫu nhiên)" },
+    32: { en: "Read-Only Memory", vi: "Read-Only Memory (Bộ nhớ chỉ đọc)" },
+    33: { en: "101 standard keys + 3 Windows/Menu navigation keys = 104.", vi: "101 phím tiêu chuẩn + 3 phím Windows/Menu = 104 phím." },
+    34: { en: "It defines content structure using tags, not computational control flow.", vi: "Định dạng cấu trúc bằng thẻ đánh dấu, không có cấu trúc điều khiển tính toán." },
+    35: { en: "Cascading Style Sheets define visual presentation.", vi: "Ngôn ngữ định dạng bảng kiểu trình bày (Style sheet)." },
+    36: { en: "Common modern languages: Python, Java, C, JavaScript, C++, Go.", vi: "Các ngôn ngữ phổ biến: Python, Java, C, JavaScript, C++, Go." },
+    37: { en: "Nearer to human abstraction vs nearer to machine hardware.", vi: "Gần với ngôn ngữ tự nhiên (bậc cao) vs gần với phần cứng máy tính (bậc thấp)." },
+    38: { en: "Internet Protocol", vi: "Internet Protocol (Giao thức Internet)" },
+    39: { en: "The built-in output function in Python 3.", vi: "Hàm xuất dữ liệu chuẩn ra màn hình trong Python 3." },
+    40: { en: "Short for boolean logic (True or False).", vi: "Viết tắt của kiểu logic Boole (True hoặc False)." },
+    41: { en: "int('12') converts string to integer 12; 12 + 3 = 15.", vi: "int('12') chuyển chuỗi thành số 12; 12 + 3 = 15." },
+    42: { en: "'go' repeated 3 times.", vi: "Chuỗi 'go' được lặp lại 3 lần." },
+    43: { en: "'Hi all' has 6 characters including the space.", vi: "Chuỗi 'Hi all' có 6 ký tự tính cả dấu cách." },
+    44: { en: "7 >= 5 evaluates to True.", vi: "Điều kiện 7 >= 5 là True, nhánh if được thực thi." },
+    45: { en: "Ahead-of-time machine code translation vs line-by-line runtime execution.", vi: "Dịch toàn bộ mã nguồn trước khi chạy vs đọc và thực thi từng dòng khi chạy." },
+    46: { en: "All console inputs from input() are returned as text.", vi: "Mọi dữ liệu nhập từ input() đều trả về kiểu chuỗi ký tự (str)." },
+    47: { en: "13 = 8 + 4 + 1 = 1101 in binary.", vi: "13 = 8 + 4 + 0 + 1 => nhị phân là 1101." },
+    48: { en: "17 divided by 5 is 3 with remainder 2.", vi: "17 chia 5 được 3 dư 2 (toán tử % lấy số dư)." },
+    49: { en: "Client sends Request; server sends back ...", vi: "Client gửi Request; Server phản hồi lại ..." },
+    50: { en: "The while loop stops when n is no longer strictly less than 3.", vi: "Vòng lặp dừng lại khi n không còn nhỏ hơn 3 (khi n = 3)." },
+    51: { en: "IEEE 754 binary floating-point representation cannot represent 0.1 exactly.", vi: "Biểu diễn số thực dấu phẩy động nhị phân IEEE 754 gây sai số làm tròn nhỏ." },
+    52: { en: "Any non-empty string in Python evaluates to True in boolean context.", vi: "Bất kỳ chuỗi nào khác rỗng trong Python khi chuyển sang bool đều là True." },
+    53: { en: "Cannot concatenate str and int with + operator.", vi: "Không thể nối chuỗi (str) với số nguyên (int) bằng toán tử +." },
+    54: { en: "List has 2 items (indices 0 and 1); index 2 is out of range.", vi: "Danh sách chỉ có 2 phần tử (chỉ mục 0 và 1); chỉ mục 2 vượt quá giới hạn." },
+    55: { en: "b is a shallow copy (.copy()); modifying b does not modify a.", vi: "b là bản sao nông (.copy()), nên thay đổi b không ảnh hưởng đến a." },
+    56: { en: "Strings in Python are immutable.", vi: "Chuỗi ký tự trong Python là bất biến (immutable), không thể gán lại từng ký tự." },
+    57: { en: "list.append() modifies the list in-place and returns None.", vi: "Phương thức list.append() sửa đổi danh sách tại chỗ và trả về None." },
+    58: { en: "Loop breaks when n == 4: total = 1 + 2 + 3 = 6.", vi: "Vòng lặp ngắt khi n == 4: tổng tích lũy là 1 + 2 + 3 = 6." },
+    59: { en: "IP connectivity works; DNS domain resolution failed.", vi: "Kết nối mạng cấp IP vẫn thông; chỉ có dịch vụ DNS phân giải tên miền bị lỗi." },
+    60: { en: "Python or Java compiles to intermediate bytecode then interprets it via a VM.", vi: "Python hoặc Java biên dịch ra mã bytecode trung gian rồi máy ảo thông dịch bytecode đó." }
+};
+
 // Safe event listener helper (polymorphic: supports on(el, 'click', fn) or on(el, fn))
 function on(el, event, handler) {
     if (!el) return;
@@ -275,6 +339,10 @@ const state = {
         try { return localStorage.getItem('cypher_lock_password') || 'duypher67'; } catch (e) { return 'duypher67'; }
     })(),
     lockModalContext: 'toggle', // 'toggle' or 'restart'
+    hintsEnabled: (function() {
+        try { return localStorage.getItem('cypher_hints_enabled') !== 'false'; } catch (e) { return true; }
+    })(),
+    isHintRevealed: false,
     session: {
         targetCount: 5,
         answeredCount: 0,
@@ -308,10 +376,19 @@ function getElements() {
         lockToggleBtn: document.getElementById('lockToggleBtn'),
         lockIcon: document.getElementById('lockIcon'),
 
-        // Question Area
+        // Hint Topbar Checkbox
+        hintToggleWrap: document.getElementById('hintToggleWrap'),
+        hintToggleCheckbox: document.getElementById('hintToggleCheckbox'),
+        hintToggleText: document.getElementById('hintToggleText'),
+
+        // Question Area & Hints
         questionImageContainer: document.getElementById('questionImageContainer'),
         questionImage: document.getElementById('questionImage'),
         questionText: document.getElementById('questionText'),
+        questionHintBtn: document.getElementById('questionHintBtn'),
+        hintBtnLabel: document.getElementById('hintBtnLabel'),
+        questionHintBox: document.getElementById('questionHintBox'),
+        questionHintText: document.getElementById('questionHintText'),
         interactiveArea: document.getElementById('interactiveArea'),
         nextActionWrap: document.getElementById('nextActionWrap'),
         nextQuestionBtn: document.getElementById('nextQuestionBtn'),
@@ -470,6 +547,14 @@ function applyLanguage(lang, isInitial = false) {
 
     // Update NEXT button text (Next / Finish in current language)
     updateNextButtonText();
+
+    // Update hint display for current language
+    if (state.currentIndex >= 0 && state.currentIndex < state.questions.length) {
+        updateHintDisplay(state.questions[state.currentIndex]);
+    }
+    if (elements.hintToggleText) {
+        elements.hintToggleText.textContent = lang === 'VIE' ? 'Gợi ý' : 'Hints';
+    }
 }
 
 function updateNextButtonText() {
@@ -753,6 +838,8 @@ function updateLockUI() {
         if (elements.searchBtn) elements.searchBtn.classList.add('is-locked');
         if (elements.randomizeBtn) elements.randomizeBtn.classList.add('is-locked');
         if (elements.csvManagerBtn) elements.csvManagerBtn.classList.add('is-locked');
+        if (elements.hintToggleWrap) elements.hintToggleWrap.classList.add('is-locked');
+        if (elements.hintToggleCheckbox) elements.hintToggleCheckbox.disabled = true;
     } else {
         elements.lockIcon.innerHTML = `
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -765,6 +852,8 @@ function updateLockUI() {
         if (elements.searchBtn) elements.searchBtn.classList.remove('is-locked');
         if (elements.randomizeBtn) elements.randomizeBtn.classList.remove('is-locked');
         if (elements.csvManagerBtn) elements.csvManagerBtn.classList.remove('is-locked');
+        if (elements.hintToggleWrap) elements.hintToggleWrap.classList.remove('is-locked');
+        if (elements.hintToggleCheckbox) elements.hintToggleCheckbox.disabled = false;
     }
 }
 
@@ -919,6 +1008,16 @@ function processBilingualRows(rows) {
 
         const id = questionsEn.length + 1;
 
+        const hintEnIdx = getColIdx(['hint_en', 'hint', 'hinten']);
+        const hintViIdx = getColIdx(['hint_vi', 'hintvi']);
+
+        const csvHintEn = hintEnIdx !== -1 ? (row[hintEnIdx] || '').trim() : '';
+        const csvHintVi = hintViIdx !== -1 ? (row[hintViIdx] || '').trim() : csvHintEn;
+
+        const defaultHint = QUESTION_HINTS[id] || {};
+        const hintEn = csvHintEn || defaultHint.en || '';
+        const hintVi = csvHintVi || defaultHint.vi || hintEn;
+
         questionsEn.push({
             id,
             title: (rawTitleEn || rawTitleVi).trim(),
@@ -926,7 +1025,8 @@ function processBilingualRows(rows) {
             type: isMultipleChoice ? 'multiple choice' : 'short_answer',
             choices: choicesEn,
             correctAnswer: ansEn || ansVi,
-            ignore_ai: Boolean(ignoreAi)
+            ignore_ai: Boolean(ignoreAi),
+            hint: hintEn
         });
 
         questionsVi.push({
@@ -936,7 +1036,8 @@ function processBilingualRows(rows) {
             type: isMultipleChoice ? 'multiple choice' : 'short_answer',
             choices: choicesVi.length > 0 ? choicesVi : choicesEn,
             correctAnswer: ansVi || ansEn,
-            ignore_ai: Boolean(ignoreAi)
+            ignore_ai: Boolean(ignoreAi),
+            hint: hintVi
         });
     }
 
@@ -1200,6 +1301,10 @@ function displayQuestion(index) {
 
     updateNextButtonText();
 
+    // Reset and render hint
+    state.isHintRevealed = false;
+    updateHintDisplay(q);
+
     // Render Choices or Input
     renderInteractiveArea(q);
 }
@@ -1249,6 +1354,65 @@ function checkDirectAnswerMatch(val, q) {
     }
 
     return accepted.has(normVal);
+}
+
+
+/* ==========================================================================
+   Question Hints Engine
+   ========================================================================== */
+
+function updateHintDisplay(q) {
+    if (!elements.questionHintBtn || !elements.questionHintBox) return;
+
+    const hasHint = Boolean(q && q.hint && q.hint.trim().length > 0);
+    const shouldShowBtn = state.hintsEnabled && hasHint;
+
+    if (shouldShowBtn) {
+        elements.questionHintBtn.classList.remove('hidden');
+        if (elements.hintBtnLabel) {
+            elements.hintBtnLabel.textContent = state.lang === 'VIE' ? 'Gợi ý' : 'Hint';
+        }
+        if (elements.questionHintBtn) {
+            elements.questionHintBtn.title = state.lang === 'VIE' ? 'Xem gợi ý cho câu hỏi này' : 'View hint for this question';
+        }
+    } else {
+        elements.questionHintBtn.classList.add('hidden');
+        state.isHintRevealed = false;
+    }
+
+    if (shouldShowBtn && state.isHintRevealed) {
+        elements.questionHintBox.classList.remove('hidden');
+        if (elements.questionHintText) {
+            elements.questionHintText.textContent = q.hint;
+        }
+    } else {
+        elements.questionHintBox.classList.add('hidden');
+    }
+}
+
+function checkMultipleChoiceMatch(choiceIdx, choiceText, q) {
+    if (!q) return false;
+    const cleanChoice = normalizeDirectAnswer(choiceText);
+    const cleanAnswer = normalizeDirectAnswer(q.correctAnswer);
+    const letters = ['a', 'b', 'c', 'd'];
+
+    // 1. Direct letter match (e.g. answer key is 'A' or 'b')
+    if (cleanAnswer === letters[choiceIdx]) return true;
+
+    // 2. Direct string match
+    if (cleanChoice === cleanAnswer) return true;
+
+    // 3. Normalized answer check via checkDirectAnswerMatch
+    if (checkDirectAnswerMatch(choiceText, q)) return true;
+
+    // 4. Bilingual check against both EN and VI correct answers
+    const qEn = state.questionsEn && state.currentIndex >= 0 ? state.questionsEn[state.currentIndex] : null;
+    const qVi = state.questionsVi && state.currentIndex >= 0 ? state.questionsVi[state.currentIndex] : null;
+
+    if (qEn && (normalizeDirectAnswer(qEn.correctAnswer) === cleanChoice || normalizeDirectAnswer(qEn.correctAnswer) === letters[choiceIdx])) return true;
+    if (qVi && (normalizeDirectAnswer(qVi.correctAnswer) === cleanChoice || normalizeDirectAnswer(qVi.correctAnswer) === letters[choiceIdx])) return true;
+
+    return false;
 }
 
 function renderInteractiveArea(q) {
@@ -1457,8 +1621,8 @@ function handleChoiceClick(choiceIdx, choiceText, q) {
         if (slot) slot.innerHTML = '';
     });
 
-    const isMatch = choiceText.trim().toLowerCase() === (q.correctAnswer || '').trim().toLowerCase()
-        || ['a', 'b', 'c', 'd'][choiceIdx] === (q.correctAnswer || '').trim().toLowerCase();
+    // Step 1: Check if choice matches perfectly with answer key (0 API calls, saves API costs)
+    const isMatch = checkMultipleChoiceMatch(choiceIdx, choiceText, q);
 
     state.currentAnswerState = {
         answered: true,
@@ -1727,6 +1891,29 @@ function initEvents() {
     });
 
     // NEXT -> Action Click
+    // Hint toggle checkbox in top bar
+    if (elements.hintToggleCheckbox) {
+        elements.hintToggleCheckbox.checked = state.hintsEnabled;
+        on(elements.hintToggleCheckbox, 'change', () => {
+            if (state.isLocked) return;
+            state.hintsEnabled = Boolean(elements.hintToggleCheckbox.checked);
+            try {
+                localStorage.setItem('cypher_hints_enabled', String(state.hintsEnabled));
+            } catch (err) {}
+            if (state.currentIndex >= 0 && state.currentIndex < state.questions.length) {
+                updateHintDisplay(state.questions[state.currentIndex]);
+            }
+        });
+    }
+
+    // Hint button next to question
+    on(elements.questionHintBtn, 'click', () => {
+        state.isHintRevealed = !state.isHintRevealed;
+        if (state.currentIndex >= 0 && state.currentIndex < state.questions.length) {
+            updateHintDisplay(state.questions[state.currentIndex]);
+        }
+    });
+
     on(elements.nextQuestionBtn, 'click', () => {
         if (state.session.answeredCount >= state.session.targetCount) {
             showGameOverScreen();

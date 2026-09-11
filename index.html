@@ -61,6 +61,17 @@
                     <span class="sr-only">CSV Options</span>
                 </button>
 
+                <!-- Hint Toggle Checkbox -->
+                <label class="topbar-checkbox-label" id="hintToggleWrap" title="Toggle Question Hints">
+                    <input type="checkbox" id="hintToggleCheckbox" class="hint-checkbox-input" checked>
+                    <span class="custom-checkbox-box">
+                        <svg class="check-mark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    <span class="checkbox-text" id="hintToggleText">Hints</span>
+                </label>
+
                 <!-- Password Lock Toggle Button -->
                 <button class="btn btn-icon-only" id="lockToggleBtn" title="Lock / Unlock Controls">
                     <svg class="btn-icon" id="lockIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -82,9 +93,26 @@
                     <img src="" alt="Question Attachment" class="question-image" id="questionImage">
                 </div>
 
-                <!-- Question Title -->
+                <!-- Question Title & Hint Row -->
                 <div class="question-headline-wrap">
-                    <h1 class="question-headline" id="questionText">Loading question...</h1>
+                    <div class="headline-row">
+                        <h1 class="question-headline" id="questionText">Loading question...</h1>
+                        <button class="btn-hint hidden" id="questionHintBtn" type="button" title="View Hint">
+                            <svg class="hint-bulb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18h6"></path>
+                                <path d="M10 22h4"></path>
+                                <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+                            </svg>
+                            <span class="hint-btn-label" id="hintBtnLabel">Hint</span>
+                        </button>
+                    </div>
+                    <!-- Collapsible Hint Card -->
+                    <div class="question-hint-box hidden" id="questionHintBox">
+                        <div class="hint-box-content">
+                            <span class="hint-box-badge">💡 HINT</span>
+                            <span class="hint-box-text" id="questionHintText"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Interactive Choices / Input -->
