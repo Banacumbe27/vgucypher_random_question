@@ -241,9 +241,14 @@ print(total)",,short_answer,,,,,,,,,6,6,
 "A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,No. IP connectivity works; name resolution may be failing.,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
 Can a language implementation both compile and interpret the same program? Briefly explain.,Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.","Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",`;
 
-// Safe event listener helper
+// Safe event listener helper (polymorphic: supports on(el, 'click', fn) or on(el, fn))
 function on(el, event, handler) {
-    if (el && typeof el.addEventListener === 'function') {
+    if (!el) return;
+    if (typeof event === 'function' && handler === undefined) {
+        handler = event;
+        event = 'click';
+    }
+    if (typeof el.addEventListener === 'function') {
         el.addEventListener(event, handler);
     }
 }
@@ -1704,7 +1709,7 @@ function escapeHtml(str) {
    ========================================================================== */
 
 function initEvents() {
-    on(elements.randomizeBtn, () => {
+    on(elements.randomizeBtn, 'click', () => {
         if (state.isLocked) return;
         if (state.hasAnsweredCurrent && state.session.answeredCount >= state.session.targetCount) {
             showGameOverScreen();
@@ -1713,11 +1718,11 @@ function initEvents() {
         }
     });
 
-    on(elements.searchBtn, () => {
+    on(elements.searchBtn, 'click', () => {
         if (!state.isLocked) openSearchModal();
     });
 
-    on(elements.csvManagerBtn, () => {
+    on(elements.csvManagerBtn, 'click', () => {
         if (!state.isLocked) openCsvModal();
     });
 
