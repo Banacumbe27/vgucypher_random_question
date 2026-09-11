@@ -82,7 +82,7 @@ Is HTML a programming language? Name its language category.,,short_answer,,,,,No
 What type of language is CSS?,,short_answer,,,,,Style sheet language.,
 Name four programming languages.,,short_answer,,,,,"Python, Java, C, JavaScript.",
 Name the two broad programming-language levels used in introductory classifications.,,short_answer,,,,,High-level and low-level.,
-What does IP stand for in computer networking?,,short_answer,,,,,Internet Protocol,
+What does IP stand for in computer networking?,,short_answer,,,,,Internet Protocol,true
 Which Python 3 built-in function displays text in the console?,,short_answer,,,,,print(),true
 What is the name of the Python 3 built-in type with values True and False?,,short_answer,,,,,bool,true
 "What does this Python 3 code print?

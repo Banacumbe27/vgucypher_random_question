@@ -128,7 +128,7 @@ Is HTML a programming language? Name its language category.,HTML có phải là 
 What type of language is CSS?,CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,,,,,Style sheet language.,Ngôn ngữ định kiểu.,
 Name four programming languages.,Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,,,,,"Python, Java, C, JavaScript.","Python, Java, C, JavaScript.",
 Name the two broad programming-language levels used in introductory classifications.,Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,,,,,High-level and low-level.,Bậc cao và bậc thấp.,
-What does IP stand for in computer networking?,"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,,,,,Internet Protocol,Internet Protocol,
+What does IP stand for in computer networking?,"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,,,,,Internet Protocol,Internet Protocol,true
 Which Python 3 built-in function displays text in the console?,Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,,,,,print(),print(),true
 What is the name of the Python 3 built-in type with values True and False?,Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,,,,,bool,bool,true
 "What does this Python 3 code print?

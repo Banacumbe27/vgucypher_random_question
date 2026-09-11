@@ -82,7 +82,7 @@ HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ng�
 CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,Ngôn ngữ định kiểu.,
 Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,"Python, Java, C, JavaScript.",
 Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,Bậc cao và bậc thấp.,
-"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,Internet Protocol,
+"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,Internet Protocol,true
 Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,print(),true
 Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,bool,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
