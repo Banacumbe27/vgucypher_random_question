@@ -360,7 +360,8 @@ const state = {
         userText: '',
         commentary: '',
         model: ''
-    }
+    },
+    currentQuestionCode: ''
 };
 
 // Accessor for DOM Elements (always dynamic and safe)
@@ -381,10 +382,15 @@ function getElements() {
         hintToggleCheckbox: document.getElementById('hintToggleCheckbox'),
         hintToggleText: document.getElementById('hintToggleText'),
 
-        // Question Area & Hints
+        // Question Area & Code & Hints
         questionImageContainer: document.getElementById('questionImageContainer'),
         questionImage: document.getElementById('questionImage'),
         questionText: document.getElementById('questionText'),
+        questionCodeWrap: document.getElementById('questionCodeWrap'),
+        codeLangLabel: document.getElementById('codeLangLabel'),
+        codeCopyBtn: document.getElementById('codeCopyBtn'),
+        codeCopyLabel: document.getElementById('codeCopyLabel'),
+        questionCodeLines: document.getElementById('questionCodeLines'),
         questionHintBtn: document.getElementById('questionHintBtn'),
         hintBtnLabel: document.getElementById('hintBtnLabel'),
         questionHintBox: document.getElementById('questionHintBox'),
@@ -574,10 +580,8 @@ function updateCurrentQuestionLanguage() {
 
     const q = state.questions[state.currentIndex];
 
-    // 1. Headline updates to new language
-    if (elements.questionText) {
-        elements.questionText.textContent = q.title;
-    }
+    // 1. Headline & code snippet updates to new language
+    renderQuestionTitleAndCode(q);
 
     // 2. Question image
     if (elements.questionImage && elements.questionImageContainer) {
@@ -1264,6 +1268,83 @@ function randomizeQuestion() {
     displayQuestion(nextIndex);
 }
 
+/* ==========================================================================
+   Question Headline & Code Block Rendering
+   ========================================================================== */
+
+function splitQuestionPromptAndCode(rawTitle) {
+    if (!rawTitle || typeof rawTitle !== 'string') {
+        return { prompt: '', code: '' };
+    }
+
+    if (rawTitle.includes('\n')) {
+        const parts = rawTitle.split(/\r?\n/);
+        const prompt = parts[0].trim();
+        let codeLines = parts.slice(1);
+        while (codeLines.length > 0 && codeLines[0].trim() === '') {
+            codeLines.shift();
+        }
+        while (codeLines.length > 0 && codeLines[codeLines.length - 1].trim() === '') {
+            codeLines.pop();
+        }
+
+        const code = codeLines.join('\n');
+        if (code.length > 0) {
+            return { prompt, code };
+        }
+    }
+
+    return { prompt: rawTitle.trim(), code: '' };
+}
+
+function renderCodeSnippetLines(code) {
+    if (!elements.questionCodeLines) return;
+    elements.questionCodeLines.innerHTML = '';
+
+    const lines = code.split(/\r?\n/);
+    lines.forEach((lineText, idx) => {
+        const lineRow = document.createElement('div');
+        lineRow.className = 'code-line-row';
+
+        const lineNum = document.createElement('span');
+        lineNum.className = 'code-line-num';
+        lineNum.textContent = String(idx + 1);
+
+        const lineContent = document.createElement('span');
+        lineContent.className = 'code-line-content';
+        lineContent.textContent = lineText.length === 0 ? ' ' : lineText;
+
+        lineRow.appendChild(lineNum);
+        lineRow.appendChild(lineContent);
+        elements.questionCodeLines.appendChild(lineRow);
+    });
+}
+
+function renderQuestionTitleAndCode(q) {
+    if (!elements.questionText) return;
+
+    const rawTitle = q?.title || '';
+    const { prompt, code } = splitQuestionPromptAndCode(rawTitle);
+
+    elements.questionText.textContent = prompt;
+
+    if (elements.questionCodeWrap && elements.questionCodeLines) {
+        if (code && code.trim().length > 0) {
+            elements.questionCodeWrap.classList.remove('hidden');
+            renderCodeSnippetLines(code);
+            state.currentQuestionCode = code;
+        } else {
+            elements.questionCodeWrap.classList.add('hidden');
+            elements.questionCodeLines.innerHTML = '';
+            state.currentQuestionCode = '';
+        }
+    }
+
+    if (elements.codeCopyLabel) {
+        elements.codeCopyLabel.textContent = state.lang === 'VIE' ? 'Sao chép' : 'Copy';
+    }
+}
+
 function displayQuestion(index) {
     if (index < 0 || index >= state.questions.length) return;
 
@@ -1280,10 +1361,8 @@ function displayQuestion(index) {
     };
     const q = state.questions[index];
 
-    // Headline
-    if (elements.questionText) {
-        elements.questionText.textContent = q.title;
-    }
+    // Headline & Code Block
+    renderQuestionTitleAndCode(q);
 
     // Image
     if (elements.questionImage && elements.questionImageContainer) {
@@ -1785,12 +1864,22 @@ function renderRoundBreakdown() {
         entry.className = 'breakdown-item';
 
         const qObj = isVi ? item.questionVi : item.questionEn;
-        const qTitle = qObj?.title || item.title || `Question ${idx + 1}`;
+        const rawTitle = qObj?.title || item.title || `Question ${idx + 1}`;
+        const { prompt, code } = splitQuestionPromptAndCode(rawTitle);
         const refAnswer = qObj?.correctAnswer || item.correctAnswer || '';
 
         const statusTag = item.isCorrect
             ? `<span class="breakdown-status-tag is-correct">✓ ${isVi ? 'ĐÚNG' : 'CORRECT'}</span>`
             : `<span class="breakdown-status-tag is-wrong">✕ ${isVi ? 'SAI' : 'WRONG'}</span>`;
+
+        let codePreviewHtml = '';
+        if (code) {
+            codePreviewHtml = `
+                <div class="breakdown-code-preview">
+                    <pre><code>${escapeHtml(code)}</code></pre>
+                </div>
+            `;
+        }
 
         let detailsHtml = '';
         if (item.isCorrect) {
@@ -1806,9 +1895,10 @@ function renderRoundBreakdown() {
 
         entry.innerHTML = `
             <div class="breakdown-item-top">
-                <span class="breakdown-q-title"><strong>#${idx + 1}.</strong> ${escapeHtml(qTitle)}</span>
+                <span class="breakdown-q-title"><strong>#${idx + 1}.</strong> ${escapeHtml(prompt)}</span>
                 ${statusTag}
             </div>
+            ${codePreviewHtml}
             ${detailsHtml}
         `;
 
@@ -1859,8 +1949,10 @@ function renderSearchResults() {
     filtered.forEach(q => {
         const entry = document.createElement('div');
         entry.className = 'search-entry';
+        const { prompt, code } = splitQuestionPromptAndCode(q.title);
+        const codePill = code ? `<span class="search-code-pill">&lt;/&gt; CODE</span>` : '';
         entry.innerHTML = `
-            <span class="search-entry-title">${escapeHtml(q.title)}</span>
+            <span class="search-entry-title">${escapeHtml(prompt)}${codePill}</span>
             <span class="search-entry-type">${q.type === 'multiple choice' ? 'MC' : 'Short'}</span>
         `;
         entry.addEventListener('click', () => {
@@ -1940,6 +2032,26 @@ function initEvents() {
     on(elements.csvManagerBtn, 'click', () => {
         if (!state.isLocked) openCsvModal();
     });
+
+    // Code block copy button
+    if (elements.codeCopyBtn) {
+        on(elements.codeCopyBtn, 'click', async () => {
+            if (!state.currentQuestionCode) return;
+            try {
+                await navigator.clipboard.writeText(state.currentQuestionCode);
+                if (elements.codeCopyLabel) {
+                    elements.codeCopyLabel.textContent = state.lang === 'VIE' ? 'Đã chép!' : 'Copied!';
+                }
+                setTimeout(() => {
+                    if (elements.codeCopyLabel) {
+                        elements.codeCopyLabel.textContent = state.lang === 'VIE' ? 'Sao chép' : 'Copy';
+                    }
+                }, 1800);
+            } catch (err) {
+                console.error('Clipboard copy failed:', err);
+            }
+        });
+    }
 
     // NEXT -> Action Click
     // Hint toggle checkbox in top bar
