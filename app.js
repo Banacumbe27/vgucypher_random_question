@@ -628,18 +628,9 @@ function updateCurrentQuestionLanguage() {
                 if (aiBadge) {
                     if (ansState.isCorrect) {
                         aiBadge.textContent = `${state.lang === 'VIE' ? 'Độ khớp' : 'Match score'}: ${ansState.percentage}%`;
-                    } else if (ansState.ignore_ai) {
-                        aiBadge.textContent = state.lang === 'VIE' ? 'Quy tắc chấm' : 'Grading Rule';
                     } else {
                         aiBadge.textContent = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
                     }
-                }
-
-                const aiCommentaryText = resultDisplay.querySelector('.sa-ai-commentary-text');
-                if (aiCommentaryText && ansState.ignore_ai) {
-                    aiCommentaryText.textContent = state.lang === 'VIE'
-                        ? 'Câu hỏi yêu cầu đáp án chính xác tuyệt đối (không qua AI chấm).'
-                        : 'Question requires an exact answer (AI grading bypassed).';
                 }
 
                 const correctLabel = resultDisplay.querySelector('.sa-correct-label');
@@ -1493,16 +1484,19 @@ function updateHintDisplay(q) {
         }
     } else {
         elements.questionHintBtn.classList.add('hidden');
+        elements.questionHintBtn.classList.remove('is-revealed');
         state.isHintRevealed = false;
     }
 
     if (shouldShowBtn && state.isHintRevealed) {
         elements.questionHintBox.classList.remove('hidden');
+        elements.questionHintBtn.classList.add('is-revealed');
         if (elements.questionHintText) {
             elements.questionHintText.textContent = q.hint;
         }
     } else {
         elements.questionHintBox.classList.add('hidden');
+        elements.questionHintBtn.classList.remove('is-revealed');
     }
 }
 
@@ -1563,25 +1557,13 @@ function renderInteractiveArea(q) {
         const form = document.createElement('div');
         form.className = 'sa-form';
 
-        if (q.ignore_ai) {
-            const strictNotice = document.createElement('div');
-            strictNotice.className = 'sa-strict-tag';
-            strictNotice.innerHTML = `
-                <span class="sa-strict-dot">●</span>
-                <span>${state.lang === 'VIE' ? 'Yêu cầu đáp án chính xác (Không qua AI)' : 'Exact answer required (AI bypassed)'}</span>
-            `;
-            form.appendChild(strictNotice);
-        }
-
         const inputRow = document.createElement('div');
         inputRow.className = 'sa-input-row';
 
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'sa-field';
-        input.placeholder = q.ignore_ai
-            ? (state.lang === 'VIE' ? 'Nhập chính xác kết quả...' : 'Type exact answer...')
-            : (state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...');
+        input.placeholder = state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...';
         if (state.currentAnswerState && state.currentAnswerState.userText) {
             input.value = state.currentAnswerState.userText;
         }
@@ -1626,10 +1608,8 @@ function renderInteractiveArea(q) {
                 gradeResult = {
                     isCorrect: false,
                     percentage: 0,
-                    commentary: state.lang === 'VIE'
-                        ? 'Câu hỏi yêu cầu đáp án chính xác tuyệt đối (không qua AI chấm).'
-                        : 'Question requires an exact answer (AI grading bypassed).',
-                    model: 'strict-exact'
+                    commentary: '',
+                    model: 'direct-match'
                 };
             } else {
                 const evalNotice = document.createElement('div');
@@ -1697,9 +1677,7 @@ function renderInteractiveArea(q) {
                     ${feedbackHtml}
                 `;
             } else {
-                const commentaryTitle = q.ignore_ai
-                    ? (state.lang === 'VIE' ? 'Quy tắc chấm' : 'Grading Rule')
-                    : (state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong');
+                const commentaryTitle = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
                 const commentaryHtml = gradeResult.commentary ? `
                     <div class="sa-ai-commentary-box">
                         <div class="sa-ai-header">
