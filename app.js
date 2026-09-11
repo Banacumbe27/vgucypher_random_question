@@ -134,23 +134,23 @@ What type of language is CSS?,CSS thuộc loại ngôn ngữ nào?,,short_answer
 Name four programming languages.,Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,,,,,"Python, Java, C, JavaScript.","Python, Java, C, JavaScript.",
 Name the two broad programming-language levels used in introductory classifications.,Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,,,,,High-level and low-level.,Bậc cao và bậc thấp.,
 What does IP stand for in computer networking?,"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,,,,,Internet Protocol,Internet Protocol,
-Which Python 3 built-in function displays text in the console?,Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,,,,,print(),print(),
-What is the name of the Python 3 built-in type with values True and False?,Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,,,,,bool,bool,
+Which Python 3 built-in function displays text in the console?,Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,,,,,print(),print(),true
+What is the name of the Python 3 built-in type with values True and False?,Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,,,,,bool,bool,true
 "What does this Python 3 code print?
 
 print(int(""12"") + 3)","Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(int(""12"") + 3)",,short_answer,,,,,,,,,15,15,
+print(int(""12"") + 3)",,short_answer,,,,,,,,,15,15,true
 "What does this Python 3 code print?
 
 print(""go"" * 3)","Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(""go"" * 3)",,short_answer,,,,,,,,,gogogo,gogogo,
+print(""go"" * 3)",,short_answer,,,,,,,,,gogogo,gogogo,true
 "What does this Python 3 code print?
 
 print(len(""Hi all""))","Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(len(""Hi all""))",,short_answer,,,,,,,,,6,6,
+print(len(""Hi all""))",,short_answer,,,,,,,,,6,6,true
 "What does this Python 3 code print?
 
 score = 7
@@ -163,15 +163,15 @@ score = 7
 if score >= 5:
     print(""Pass"")
 else:
-    print(""Retry"")",,short_answer,,,,,,,,,Pass,Pass,
+    print(""Retry"")",,short_answer,,,,,,,,,Pass,Pass,true
 "In one short sentence, how does compilation differ from interpretation?","Trong một câu ngắn, hãy nêu điểm khác nhau giữa biên dịch và thông dịch.",,short_answer,,,,,,,,,Compilation produces translated code; interpretation executes source or intermediate code.,Biên dịch tạo ra mã đã được dịch; thông dịch thực thi mã nguồn hoặc mã trung gian.,
-"Which type does input() return in Python 3, even when the user types digits?","Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,,,,,str,str,
-Convert decimal 13 to binary.,Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,,,,,1101,1101,
+"Which type does input() return in Python 3, even when the user types digits?","Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,,,,,str,str,true
+Convert decimal 13 to binary.,Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,,,,,1101,1101,true
 "What does this Python 3 code print?
 
 print(17 % 5)","Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(17 % 5)",,short_answer,,,,,,,,,2,2,
+print(17 % 5)",,short_answer,,,,,,,,,2,2,true
 A server sends a requested web page back to a browser. Is that message a request or a response?,Máy chủ gửi lại cho trình duyệt một trang web đã được yêu cầu. Thông điệp đó là yêu cầu (request) hay phản hồi (response)?,,short_answer,,,,,,,,,Response,Phản hồi (Response),
 "What does this Python 3 code print?
 
@@ -183,25 +183,25 @@ print(n)","Đoạn mã Python 3 sau in ra kết quả gì?
 n = 0
 while n < 3:
     n += 1
-print(n)",,short_answer,,,,,,,,,3,3,
+print(n)",,short_answer,,,,,,,,,3,3,true
 "In Python 3, why is 0.1 + 0.2 == 0.3 False? Use one short sentence.","Trong Python 3, tại sao biểu thức 0.1 + 0.2 == 0.3 cho kết quả False? Trả lời bằng một câu ngắn.",,short_answer,,,,,,,,,Binary floating-point rounding makes these computed values slightly different.,Sai số làm tròn của số dấu phẩy động nhị phân khiến các giá trị tính được chênh lệch một chút.,
 "What does this Python 3 code print?
 
 print(bool(""False""))","Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(bool(""False""))",,short_answer,,,,,,,,,True,True,
+print(bool(""False""))",,short_answer,,,,,,,,,True,True,true
 "Which exception does this Python 3 code raise?
 
 print(""5"" + 2)","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
 
-print(""5"" + 2)",,short_answer,,,,,,,,,TypeError,TypeError,
+print(""5"" + 2)",,short_answer,,,,,,,,,TypeError,TypeError,true
 "Which exception does this Python 3 code raise?
 
 values = [1, 2]
 print(values[2])","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
 
 values = [1, 2]
-print(values[2])",,short_answer,,,,,,,,,IndexError,IndexError,
+print(values[2])",,short_answer,,,,,,,,,IndexError,IndexError,true
 "What does this Python 3 code print?
 
 a = [1, 2]
@@ -212,7 +212,7 @@ print(a)","Đoạn mã Python 3 sau in ra kết quả gì?
 a = [1, 2]
 b = a.copy()
 b.append(3)
-print(a)",,short_answer,,,,,,,,,"[1, 2]","[1, 2]",
+print(a)",,short_answer,,,,,,,,,"[1, 2]","[1, 2]",true
 "In Python 3, why does word[0] = ""C"" fail when word = ""cat""?","Trong Python 3, tại sao phép gán word[0] = ""C"" thất bại khi word = ""cat""?",,short_answer,,,,,,,,,Strings are immutable.,Chuỗi là bất biến.,
 "What does this Python 3 code print?
 
@@ -222,7 +222,7 @@ print(result)","Đoạn mã Python 3 sau in ra kết quả gì?
 
 values = [1, 2]
 result = values.append(3)
-print(result)",,short_answer,,,,,,,,,None,None,
+print(result)",,short_answer,,,,,,,,,None,None,true
 "What does this Python 3 code print?
 
 total = 0
@@ -237,7 +237,7 @@ for n in range(1, 6):
     if n == 4:
         break
     total += n
-print(total)",,short_answer,,,,,,,,,6,6,
+print(total)",,short_answer,,,,,,,,,6,6,true
 "A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,No. IP connectivity works; name resolution may be failing.,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
 Can a language implementation both compile and interpret the same program? Briefly explain.,Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.","Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",`;
 
@@ -624,6 +624,8 @@ function updateCurrentQuestionLanguage() {
                 if (aiBadge) {
                     if (ansState.isCorrect) {
                         aiBadge.textContent = `${state.lang === 'VIE' ? 'Độ khớp' : 'Match score'}: ${ansState.percentage}%`;
+                    } else if (ansState.ignore_ai) {
+                        aiBadge.textContent = state.lang === 'VIE' ? 'Quy tắc chấm' : 'Grading Rule';
                     } else {
                         aiBadge.textContent = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
                     }
@@ -632,8 +634,8 @@ function updateCurrentQuestionLanguage() {
                 const aiCommentaryText = resultDisplay.querySelector('.sa-ai-commentary-text');
                 if (aiCommentaryText && ansState.ignore_ai) {
                     aiCommentaryText.textContent = state.lang === 'VIE'
-                        ? 'Mật mã yêu cầu khớp chính xác từng ký tự/từ.'
-                        : 'Passcode requires an exact word-by-word match.';
+                        ? 'Câu hỏi yêu cầu đáp án chính xác tuyệt đối (không qua AI chấm).'
+                        : 'Question requires an exact answer (AI grading bypassed).';
                 }
 
                 const correctLabel = resultDisplay.querySelector('.sa-correct-label');
@@ -1330,9 +1332,21 @@ function checkDirectAnswerMatch(val, q) {
         state.questionsVi && state.currentIndex >= 0 ? state.questionsVi[state.currentIndex]?.correctAnswer : null
     ].filter(Boolean);
 
+    // Strip trailing empty parens if user typed print() or function()
+    const valWithoutParens = normVal.endsWith('()') ? normVal.slice(0, -2) : normVal;
+    // Strip leading 0b for binary
+    const valWithout0b = valWithoutParens.startsWith('0b') ? valWithoutParens.slice(2) : valWithoutParens;
+    // Strip all spaces for condensed comparison like '[1,2]' vs '[1, 2]' or 'type error' vs 'typeerror'
+    const spaceLessVal = valWithout0b.replace(/\s+/g, '');
+
     for (const raw of rawList) {
         const norm = normalizeDirectAnswer(raw);
         if (norm) accepted.add(norm);
+
+        // Strip trailing parens from reference e.g. "print()" -> "print"
+        if (norm.endsWith('()')) {
+            accepted.add(norm.slice(0, -2));
+        }
 
         // Parentheses extraction (e.g., "DHCP (Dynamic Host Configuration Protocol)" -> "dhcp" & "dynamic host configuration protocol")
         const parenMatch = raw.match(/^(.*?)\s*\((.*?)\)$/);
@@ -1351,9 +1365,32 @@ function checkDirectAnswerMatch(val, q) {
             accepted.add(numMatch[1] + ' layer');
             accepted.add(numMatch[1] + ' tầng');
         }
+
+        const spaceLessNorm = norm.replace(/\s+/g, '');
+        // Programming aliases
+        if (spaceLessNorm === 'bool') {
+            accepted.add('boolean');
+            accepted.add('kiểu bool');
+        }
+        if (spaceLessNorm === 'str') {
+            accepted.add('string');
+            accepted.add('kiểu str');
+            accepted.add('kiểu chuỗi');
+        }
+        if (spaceLessNorm === '1101') {
+            accepted.add('0b1101');
+        }
+        if (spaceLessNorm === 'print' || spaceLessNorm === 'print()') {
+            accepted.add('print');
+            accepted.add('print()');
+            accepted.add('hàm print');
+        }
+
+        // Exact match with all spaces collapsed (e.g. '[1,2]' vs '[1, 2]', 'type error' vs 'typeerror')
+        if (spaceLessVal === spaceLessNorm) return true;
     }
 
-    return accepted.has(normVal);
+    return accepted.has(normVal) || accepted.has(valWithoutParens) || accepted.has(valWithout0b);
 }
 
 
@@ -1447,13 +1484,25 @@ function renderInteractiveArea(q) {
         const form = document.createElement('div');
         form.className = 'sa-form';
 
+        if (q.ignore_ai) {
+            const strictNotice = document.createElement('div');
+            strictNotice.className = 'sa-strict-tag';
+            strictNotice.innerHTML = `
+                <span class="sa-strict-dot">●</span>
+                <span>${state.lang === 'VIE' ? 'Yêu cầu đáp án chính xác (Không qua AI)' : 'Exact answer required (AI bypassed)'}</span>
+            `;
+            form.appendChild(strictNotice);
+        }
+
         const inputRow = document.createElement('div');
         inputRow.className = 'sa-input-row';
 
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'sa-field';
-        input.placeholder = state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...';
+        input.placeholder = q.ignore_ai
+            ? (state.lang === 'VIE' ? 'Nhập chính xác kết quả...' : 'Type exact answer...')
+            : (state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...');
         if (state.currentAnswerState && state.currentAnswerState.userText) {
             input.value = state.currentAnswerState.userText;
         }
@@ -1499,9 +1548,9 @@ function renderInteractiveArea(q) {
                     isCorrect: false,
                     percentage: 0,
                     commentary: state.lang === 'VIE'
-                        ? 'Mật mã yêu cầu khớp chính xác từng ký tự/từ.'
-                        : 'Passcode requires an exact word-by-word match.',
-                    model: 'passcode-exact'
+                        ? 'Câu hỏi yêu cầu đáp án chính xác tuyệt đối (không qua AI chấm).'
+                        : 'Question requires an exact answer (AI grading bypassed).',
+                    model: 'strict-exact'
                 };
             } else {
                 const evalNotice = document.createElement('div');
@@ -1569,7 +1618,9 @@ function renderInteractiveArea(q) {
                     ${feedbackHtml}
                 `;
             } else {
-                const commentaryTitle = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
+                const commentaryTitle = q.ignore_ai
+                    ? (state.lang === 'VIE' ? 'Quy tắc chấm' : 'Grading Rule')
+                    : (state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong');
                 const commentaryHtml = gradeResult.commentary ? `
                     <div class="sa-ai-commentary-box">
                         <div class="sa-ai-header">

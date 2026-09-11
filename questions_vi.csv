@@ -83,60 +83,60 @@ CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,Ngôn ngữ định kiể
 Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,"Python, Java, C, JavaScript.",
 Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,Bậc cao và bậc thấp.,
 "Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,Internet Protocol,
-Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,print(),
-Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,bool,
+Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,print(),true
+Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,bool,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(int(""12"") + 3)",,short_answer,,,,,15,
+print(int(""12"") + 3)",,short_answer,,,,,15,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(""go"" * 3)",,short_answer,,,,,gogogo,
+print(""go"" * 3)",,short_answer,,,,,gogogo,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(len(""Hi all""))",,short_answer,,,,,6,
+print(len(""Hi all""))",,short_answer,,,,,6,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
 score = 7
 if score >= 5:
     print(""Pass"")
 else:
-    print(""Retry"")",,short_answer,,,,,Pass,
+    print(""Retry"")",,short_answer,,,,,Pass,true
 "Trong một câu ngắn, hãy nêu điểm khác nhau giữa biên dịch và thông dịch.",,short_answer,,,,,Biên dịch tạo ra mã đã được dịch; thông dịch thực thi mã nguồn hoặc mã trung gian.,
-"Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,str,
-Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,1101,
+"Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,str,true
+Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,1101,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(17 % 5)",,short_answer,,,,,2,
+print(17 % 5)",,short_answer,,,,,2,true
 Máy chủ gửi lại cho trình duyệt một trang web đã được yêu cầu. Thông điệp đó là yêu cầu (request) hay phản hồi (response)?,,short_answer,,,,,Phản hồi (Response),
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
 n = 0
 while n < 3:
     n += 1
-print(n)",,short_answer,,,,,3,
+print(n)",,short_answer,,,,,3,true
 "Trong Python 3, tại sao biểu thức 0.1 + 0.2 == 0.3 cho kết quả False? Trả lời bằng một câu ngắn.",,short_answer,,,,,Sai số làm tròn của số dấu phẩy động nhị phân khiến các giá trị tính được chênh lệch một chút.,
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
-print(bool(""False""))",,short_answer,,,,,True,
+print(bool(""False""))",,short_answer,,,,,True,true
 "Đoạn mã Python 3 sau gây ra ngoại lệ nào?
 
-print(""5"" + 2)",,short_answer,,,,,TypeError,
+print(""5"" + 2)",,short_answer,,,,,TypeError,true
 "Đoạn mã Python 3 sau gây ra ngoại lệ nào?
 
 values = [1, 2]
-print(values[2])",,short_answer,,,,,IndexError,
+print(values[2])",,short_answer,,,,,IndexError,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
 a = [1, 2]
 b = a.copy()
 b.append(3)
-print(a)",,short_answer,,,,,"[1, 2]",
+print(a)",,short_answer,,,,,"[1, 2]",true
 "Trong Python 3, tại sao phép gán word[0] = ""C"" thất bại khi word = ""cat""?",,short_answer,,,,,Chuỗi là bất biến.,
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
 values = [1, 2]
 result = values.append(3)
-print(result)",,short_answer,,,,,None,
+print(result)",,short_answer,,,,,None,true
 "Đoạn mã Python 3 sau in ra kết quả gì?
 
 total = 0
@@ -144,6 +144,6 @@ for n in range(1, 6):
     if n == 4:
         break
     total += n
-print(total)",,short_answer,,,,,6,
+print(total)",,short_answer,,,,,6,true
 Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
 Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,"Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",

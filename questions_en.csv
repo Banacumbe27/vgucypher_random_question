@@ -83,60 +83,60 @@ What type of language is CSS?,,short_answer,,,,,Style sheet language.,
 Name four programming languages.,,short_answer,,,,,"Python, Java, C, JavaScript.",
 Name the two broad programming-language levels used in introductory classifications.,,short_answer,,,,,High-level and low-level.,
 What does IP stand for in computer networking?,,short_answer,,,,,Internet Protocol,
-Which Python 3 built-in function displays text in the console?,,short_answer,,,,,print(),
-What is the name of the Python 3 built-in type with values True and False?,,short_answer,,,,,bool,
+Which Python 3 built-in function displays text in the console?,,short_answer,,,,,print(),true
+What is the name of the Python 3 built-in type with values True and False?,,short_answer,,,,,bool,true
 "What does this Python 3 code print?
 
-print(int(""12"") + 3)",,short_answer,,,,,15,
+print(int(""12"") + 3)",,short_answer,,,,,15,true
 "What does this Python 3 code print?
 
-print(""go"" * 3)",,short_answer,,,,,gogogo,
+print(""go"" * 3)",,short_answer,,,,,gogogo,true
 "What does this Python 3 code print?
 
-print(len(""Hi all""))",,short_answer,,,,,6,
+print(len(""Hi all""))",,short_answer,,,,,6,true
 "What does this Python 3 code print?
 
 score = 7
 if score >= 5:
     print(""Pass"")
 else:
-    print(""Retry"")",,short_answer,,,,,Pass,
+    print(""Retry"")",,short_answer,,,,,Pass,true
 "In one short sentence, how does compilation differ from interpretation?",,short_answer,,,,,Compilation produces translated code; interpretation executes source or intermediate code.,
-"Which type does input() return in Python 3, even when the user types digits?",,short_answer,,,,,str,
-Convert decimal 13 to binary.,,short_answer,,,,,1101,
+"Which type does input() return in Python 3, even when the user types digits?",,short_answer,,,,,str,true
+Convert decimal 13 to binary.,,short_answer,,,,,1101,true
 "What does this Python 3 code print?
 
-print(17 % 5)",,short_answer,,,,,2,
+print(17 % 5)",,short_answer,,,,,2,true
 A server sends a requested web page back to a browser. Is that message a request or a response?,,short_answer,,,,,Response,
 "What does this Python 3 code print?
 
 n = 0
 while n < 3:
     n += 1
-print(n)",,short_answer,,,,,3,
+print(n)",,short_answer,,,,,3,true
 "In Python 3, why is 0.1 + 0.2 == 0.3 False? Use one short sentence.",,short_answer,,,,,Binary floating-point rounding makes these computed values slightly different.,
 "What does this Python 3 code print?
 
-print(bool(""False""))",,short_answer,,,,,True,
+print(bool(""False""))",,short_answer,,,,,True,true
 "Which exception does this Python 3 code raise?
 
-print(""5"" + 2)",,short_answer,,,,,TypeError,
+print(""5"" + 2)",,short_answer,,,,,TypeError,true
 "Which exception does this Python 3 code raise?
 
 values = [1, 2]
-print(values[2])",,short_answer,,,,,IndexError,
+print(values[2])",,short_answer,,,,,IndexError,true
 "What does this Python 3 code print?
 
 a = [1, 2]
 b = a.copy()
 b.append(3)
-print(a)",,short_answer,,,,,"[1, 2]",
+print(a)",,short_answer,,,,,"[1, 2]",true
 "In Python 3, why does word[0] = ""C"" fail when word = ""cat""?",,short_answer,,,,,Strings are immutable.,
 "What does this Python 3 code print?
 
 values = [1, 2]
 result = values.append(3)
-print(result)",,short_answer,,,,,None,
+print(result)",,short_answer,,,,,None,true
 "What does this Python 3 code print?
 
 total = 0
@@ -144,6 +144,6 @@ for n in range(1, 6):
     if n == 4:
         break
     total += n
-print(total)",,short_answer,,,,,6,
+print(total)",,short_answer,,,,,6,true
 "A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",,short_answer,,,,,No. IP connectivity works; name resolution may be failing.,
 Can a language implementation both compile and interpret the same program? Briefly explain.,,short_answer,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.",
