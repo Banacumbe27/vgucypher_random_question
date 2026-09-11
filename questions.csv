@@ -1,21 +1,149 @@
 question_title,image,type,choice_1,choice_2,choice_3,choice_4,correct_answer,ignore_ai
-You delete a file and empty the Recycle Bin. Has the file completely disappeared from the hard drive?,,multiple choice,"Yes, once deleted it is gone forever and cannot be recovered.","Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",Only if the storage device is a Solid State Drive (SSD).,Only if you also delete the file from Google Drive.,"Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",
-You open your browser in Incognito/Private mode to search for information. Who CANNOT see your browsing history?,,multiple choice,Your Internet Service Provider (ISP),Your company or school network administrator,Someone else using the same computer afterward,The website you are visiting,Someone else using the same computer afterward,
-"You turn on a VPN while browsing. Does this mean no one can see what you are doing online, not even the VPN provider?",,multiple choice,"True, a VPN makes you completely anonymous to everyone on the internet.","False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.","True, a VPN encrypts data so that nobody can see it, including the VPN service provider.","False, a VPN is only used to change your IP address for streaming regional media.","False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.",
-"A website asks for your password, then sends a verification code to your email account (which uses the exact same password). Is this true two-factor authentication (2FA)?",,multiple choice,"Yes, because authentication consists of two sequential verification steps.","No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.","Yes, because email verification is managed by an independent third-party provider.","No, because email verification can never be considered an authentication mechanism.","No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.",
-A company has a firewall installed. An employee still gets infected with malware by opening a malicious email attachment. Did the firewall fail?,,multiple choice,"Yes, firewalls are designed to detect and block all cyber threats.","No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.","Yes, this security incident proves the firewall is defective.","No, firewalls are intended strictly to replace antivirus software.","No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.",
-An online service you use announces a data breach. You immediately change your password for that service. Are you safe now?,,multiple choice,"Yes, updating the password on the breached service is completely sufficient.","Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.","No, you must permanently delete the compromised account.","No, you must also change your primary email address to regain security.","Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.",
-A website address begins with 'https://' and displays a padlock icon. Does this guarantee that the website is completely safe and trustworthy?,,multiple choice,"Yes, the padlock confirms that the website owner is fully legitimate and verified.","No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.","Yes, HTTPS technology automatically scans and blocks all phishing scripts and malware.","No, HTTPS is an obsolete protocol that provides no active security benefits.","No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.",
-"You receive an account verification email appearing to be from PayPal with authentic logos and professional formatting, sent from 'support@paypa1.com'. What is the most suspicious indicator that this is phishing?",,multiple choice,The inclusion of an authentic PayPal logo,The professional layout and formal wording,The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1'),The request being delivered via an electronic email service,The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1'),
-"What does a zip bomb do to a target computer, and is it classified as a cyber attack?",,short_answer,,,,,"It temporarily crashes or freezes the computer; Yes, it is considered a cyber attack.",
-"In the Python programming language, what are the three fundamental properties of a set?",,short_answer,,,,,"Unordered, unchangeable, unindexed",
-What is the primary purpose of a firewall in a network security system?,,short_answer,,,,,To act as a digital barrier inspecting incoming and outgoing traffic and blocking unauthorized access based on security rules.,
-"What is a Trojan attack, and how does it differ fundamentally from a computer virus?",,short_answer,,,,,"A Trojan disguises itself as a legitimate application and does not replicate automatically, whereas a virus self-replicates.",
-Explain the primary difference between symmetric key encryption and asymmetric key encryption regarding key usage.,,short_answer,,,,,"Symmetric encryption uses a single shared key for both encryption and decryption, whereas asymmetric encryption uses a public-private key pair.",
-Which network protocol is primarily responsible for assigning dynamic IP addresses to devices on a local network?,,short_answer,,,,,DHCP (Dynamic Host Configuration Protocol),
-What does the acronym HTML stand for?,,short_answer,,,,,HyperText Markup Language,
-What is the role of a payload in a Trojan attack?,,short_answer,,,,,The payload is the actual malicious code that executes harmful actions or grants unauthorized control on the infected system.,
-How many layers are in the standard TCP/IP protocol suite?,,short_answer,,,,,4 layers,
-What is the fundamental difference between phishing and pharming?,,short_answer,,,,,"Phishing tricks users via fraudulent messages to steal confidential information, while pharming silently redirects users from legitimate addresses to spoofed websites.",
-Decrypt the ciphertext 'uftbxogdqlzhchmg' using a Caesar cipher shifted one character backward (shift -1).,,short_answer,,,,,vgucyphermaidinh,true
-What is the German noun for 'library'?,,short_answer,,,,,Bibliothek,
+Which component primarily executes a computer's program instructions?,,multiple choice,PSU,RAM,SSD,CPU,CPU,
+What is the main role of RAM during normal computer use?,,multiple choice,Hold active program data,Store files without power,Execute arithmetic program instructions,Supply electrical operating power,Hold active program data,
+How many bits make up one byte?,,multiple choice,16 bits,8 bits,4 bits,32 bits,8 bits,
+What is DNS mainly used for when opening a website?,,multiple choice,Assigning a device's IP address,Storing a browser's saved pages,Finding a domain's IP address,Encrypting a browser's web traffic,Finding a domain's IP address,
+Which item is an operating system?,,multiple choice,Windows,Python,Chrome,Word,Windows,
+Which storage device has no moving mechanical parts?,,multiple choice,HDD,DVD drive,Tape drive,SSD,SSD,
+Which pair lists all digits used in the binary number system?,,multiple choice,1 and 9,0 and 1,1 and 2,0 and 9,0 and 1,
+What is the type of the literal 12 in Python 3?,,multiple choice,int,float,str,bool,int,
+Which symbol starts a comment in Python 3?,,multiple choice,--,//,#,/*,#,
+Which Python 3 literal is a string?,,multiple choice,25,2.5,True,"""25""","""25""",
+What is binary 0110 in decimal?,,multiple choice,8,6,4,12,6,
+"You save a file to an SSD, then shut down normally. Where does the saved file remain?",,multiple choice,ROM,CPU,RAM,SSD,SSD,
+A browser asks a web server for a page. Which role does the browser play?,,multiple choice,Server,Router,Client,Switch,Client,
+Which is a valid IPv4 address in dotted-decimal form?,,multiple choice,192.168.1,192.168.1.5,192.168.1.5.2,192.168.1.300,192.168.1.5,
+"What does this Python 3 code print?
+
+x = 4
+x = x + 3
+print(x)",,multiple choice,4,43,7,3,7,
+"What does this Python 3 code print?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))",,multiple choice,7,14,10,11,11,
+"What does this Python 3 code print?
+
+print(not True, True or False)",,multiple choice,True True,True False,False True,False False,False True,
+"What does this Python 3 code print?
+
+print(7 // 2)",,multiple choice,1,3,3.5,4,3,
+"What does this Python 3 code print?
+
+numbers = [10, 20, 30]
+print(numbers[1])",,multiple choice,20,1,10,30,20,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)",,multiple choice,6,10,3,4,6,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)",,multiple choice,"[1, 2]","[9, 9]","[9, 2]","[1, 9]","[9, 2]",
+"What does this Python 3 code print?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)",,multiple choice,cat,catcats,s,cats,cat,
+"What does this Python 3 code print?
+
+print(-7 // 2)",,multiple choice,3,-4,-3.5,-3,-4,
+"What does this Python 3 code print?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))",,multiple choice,TypeError,None,5,0,None,
+"What does this Python 3 code print?
+
+print(5 == ""5"", 5 == 5.0)",,multiple choice,True False,True True,False False,False True,False True,
+What is the minimum number of bits needed to represent every integer from 0 through 300 in unsigned binary?,,multiple choice,8 bits,9 bits,16 bits,10 bits,9 bits,
+"Using exactly 4 bits, what remains after adding 1 to binary 1111 and discarding the extra carry bit?",,multiple choice,0000,1110,0001,1111,0000,
+"What does this Python 3 code print?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)",,multiple choice,3,6,2,4,2,
+A page uses HTTPS. Which conclusion is justified by HTTPS alone?,,multiple choice,The connection's traffic is encrypted,The website's downloads are harmless,The website's owner is trustworthy,The website's information is accurate,The connection's traffic is encrypted,
+"At 80 Mb/s, how many seconds are needed to transfer 40 MB? Use decimal units and ignore overhead.",,multiple choice,8 seconds,0.5 seconds,40 seconds,4 seconds,4 seconds,
+What does RAM stand for?,,short_answer,,,,,Random Access Memory,
+What does ROM stand for?,,short_answer,,,,,Read-Only Memory,
+"How many keys does a traditional full-size US ANSI Windows keyboard have, excluding extra media or macro keys?",,short_answer,,,,,104,
+Is HTML a programming language? Name its language category.,,short_answer,,,,,No. It is a markup language.,
+What type of language is CSS?,,short_answer,,,,,Style sheet language.,
+Name four programming languages.,,short_answer,,,,,"Python, Java, C, JavaScript.",
+Name the two broad programming-language levels used in introductory classifications.,,short_answer,,,,,High-level and low-level.,
+What does IP stand for in computer networking?,,short_answer,,,,,Internet Protocol,
+Which Python 3 built-in function displays text in the console?,,short_answer,,,,,print(),
+What is the name of the Python 3 built-in type with values True and False?,,short_answer,,,,,bool,
+"What does this Python 3 code print?
+
+print(int(""12"") + 3)",,short_answer,,,,,15,
+"What does this Python 3 code print?
+
+print(""go"" * 3)",,short_answer,,,,,gogogo,
+"What does this Python 3 code print?
+
+print(len(""Hi all""))",,short_answer,,,,,6,
+"What does this Python 3 code print?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")",,short_answer,,,,,Pass,
+"In one short sentence, how does compilation differ from interpretation?",,short_answer,,,,,Compilation produces translated code; interpretation executes source or intermediate code.,
+"Which type does input() return in Python 3, even when the user types digits?",,short_answer,,,,,str,
+Convert decimal 13 to binary.,,short_answer,,,,,1101,
+"What does this Python 3 code print?
+
+print(17 % 5)",,short_answer,,,,,2,
+A server sends a requested web page back to a browser. Is that message a request or a response?,,short_answer,,,,,Response,
+"What does this Python 3 code print?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)",,short_answer,,,,,3,
+"In Python 3, why is 0.1 + 0.2 == 0.3 False? Use one short sentence.",,short_answer,,,,,Binary floating-point rounding makes these computed values slightly different.,
+"What does this Python 3 code print?
+
+print(bool(""False""))",,short_answer,,,,,True,
+"Which exception does this Python 3 code raise?
+
+print(""5"" + 2)",,short_answer,,,,,TypeError,
+"Which exception does this Python 3 code raise?
+
+values = [1, 2]
+print(values[2])",,short_answer,,,,,IndexError,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)",,short_answer,,,,,"[1, 2]",
+"In Python 3, why does word[0] = ""C"" fail when word = ""cat""?",,short_answer,,,,,Strings are immutable.,
+"What does this Python 3 code print?
+
+values = [1, 2]
+result = values.append(3)
+print(result)",,short_answer,,,,,None,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)",,short_answer,,,,,6,
+"A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",,short_answer,,,,,No. IP connectivity works; name resolution may be failing.,
+Can a language implementation both compile and interpret the same program? Briefly explain.,,short_answer,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.",

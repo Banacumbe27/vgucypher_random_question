@@ -1,21 +1,149 @@
 question_title,image,type,choice_1,choice_2,choice_3,choice_4,correct_answer,ignore_ai
-Bạn xóa một tệp và dọn sạch Thùng rác (Recycle Bin). Tệp đó đã biến mất hoàn toàn khỏi ổ cứng chưa?,,multiple choice,"Có, một khi đã xóa thì tệp sẽ biến mất vĩnh viễn và không thể khôi phục.",Chưa chắc — dữ liệu thường vẫn còn trên đĩa cho đến khi bị ghi đè và thường có thể khôi phục bằng công cụ phù hợp.,Chỉ khi thiết bị lưu trữ là ổ cứng thể rắn (SSD).,Chỉ khi bạn cũng xóa tệp đó khỏi Google Drive.,Chưa chắc — dữ liệu thường vẫn còn trên đĩa cho đến khi bị ghi đè và thường có thể khôi phục bằng công cụ phù hợp.,
-Bạn mở trình duyệt ở chế độ Ẩn danh (Incognito/Private) để tìm kiếm thông tin. Ai KHÔNG THỂ xem lịch sử duyệt web của bạn?,,multiple choice,Nhà cung cấp dịch vụ Internet (ISP) của bạn,Quản trị viên mạng của công ty hoặc trường học,Người khác sử dụng cùng chiếc máy tính đó sau bạn,Trang web mà bạn đang truy cập,Người khác sử dụng cùng chiếc máy tính đó sau bạn,
-"Bạn bật VPN khi duyệt web. Điều này có đồng nghĩa không ai có thể thấy bạn làm gì trên mạng, kể cả nhà cung cấp VPN không?",,multiple choice,"Đúng, VPN giúp bạn ẩn danh hoàn toàn với tất cả mọi người trên internet.","Sai, VPN chỉ ẩn hoạt động của bạn khỏi ISP và mạng cục bộ — chính nhà cung cấp VPN vẫn có thể thấy lưu lượng truy cập của bạn.","Đúng, VPN mã hóa dữ liệu nên không ai có thể xem được, kể cả nhà cung cấp dịch vụ VPN.","Sai, VPN chỉ dùng để đổi địa chỉ IP nhằm xem nội dung bị giới hạn khu vực.","Sai, VPN chỉ ẩn hoạt động của bạn khỏi ISP và mạng cục bộ — chính nhà cung cấp VPN vẫn có thể thấy lưu lượng truy cập của bạn.",
-"Một trang web yêu cầu mật khẩu của bạn, sau đó gửi mã xác minh về email (vốn dùng chung chính mật khẩu đó). Đây có phải là xác thực hai yếu tố (2FA) thực sự không?",,multiple choice,"Có, vì quá trình xác thực gồm hai bước kiểm tra tuần tự.","Không, vì cả hai bước đều dựa trên cùng một loại yếu tố (điều bạn biết), thay vì hai loại yếu tố khác nhau.","Có, vì việc xác minh qua email được quản lý bởi một bên thứ ba độc lập.","Không, vì xác minh qua email không bao giờ được coi là cơ chế xác thực.","Không, vì cả hai bước đều dựa trên cùng một loại yếu tố (điều bạn biết), thay vì hai loại yếu tố khác nhau.",
-Một công ty đã cài đặt tường lửa. Một nhân viên vẫn bị nhiễm mã độc do mở tệp đính kèm độc hại trong email. Tường lửa có bị lỗi/thất bại không?,,multiple choice,"Có, tường lửa được thiết kế để phát hiện và ngăn chặn mọi mối đe dọa mạng.","Không, tường lửa kiểm soát lưu lượng mạng dựa trên quy tắc — nó không kiểm tra tệp đính kèm email hay ngăn chặn thao tác mở tệp của người dùng.","Có, sự cố an ninh này chứng minh tường lửa bị lỗi.","Không, tường lửa chỉ nhằm mục đích thay thế phần mềm diệt virus.","Không, tường lửa kiểm soát lưu lượng mạng dựa trên quy tắc — nó không kiểm tra tệp đính kèm email hay ngăn chặn thao tác mở tệp của người dùng.",
-Một dịch vụ trực tuyến bạn sử dụng thông báo bị rò rỉ dữ liệu. Bạn đổi ngay mật khẩu cho dịch vụ đó. Bạn đã an toàn chưa?,,multiple choice,"Có, việc cập nhật mật khẩu trên dịch vụ bị rò rỉ là hoàn toàn đủ.","Chưa chắc — nếu bạn dùng lại mật khẩu đó cho các tài khoản khác, những tài khoản kia vẫn có nguy cơ bị xâm nhập rất cao.","Chưa, bạn phải xóa vĩnh viễn tài khoản bị lộ đó.","Chưa, bạn phải đổi cả địa chỉ email chính để lấy lại an toàn.","Chưa chắc — nếu bạn dùng lại mật khẩu đó cho các tài khoản khác, những tài khoản kia vẫn có nguy cơ bị xâm nhập rất cao.",
-Địa chỉ trang web bắt đầu bằng 'https://' và hiển thị biểu tượng ổ khóa. Điều này có đảm bảo trang web hoàn toàn an toàn và đáng tin cậy không?,,multiple choice,"Có, ổ khóa xác nhận chủ sở hữu trang web hoàn toàn hợp pháp và đã được xác minh.","Không, HTTPS chỉ mã hóa đường truyền giữa trình duyệt và máy chủ; nó không đảm bảo bản thân trang web là lành tính hay đáng tin cậy.","Có, công nghệ HTTPS tự động quét và chặn mọi mã độc cùng tập lệnh lừa đảo.","Không, HTTPS là một giao thức lỗi thời không mang lại lợi ích bảo mật nào.","Không, HTTPS chỉ mã hóa đường truyền giữa trình duyệt và máy chủ; nó không đảm bảo bản thân trang web là lành tính hay đáng tin cậy.",
-"Bạn nhận được email xác minh tài khoản trông như từ PayPal với logo chuẩn và định dạng chuyên nghiệp, gửi từ 'support@paypa1.com'. Dấu hiệu đáng ngờ nhất cho thấy đây là lừa đảo (phishing) là gì?",,multiple choice,Sự xuất hiện của logo PayPal chính hãng,Bố cục chuyên nghiệp và ngôn từ trang trọng,Tên miền bị viết sai chính tả ('paypa1.com' thay chữ 'l' bằng số '1'),Yêu cầu được gửi thông qua dịch vụ thư điện tử,Tên miền bị viết sai chính tả ('paypa1.com' thay chữ 'l' bằng số '1'),
-"Tệp nén 'zip bomb' làm gì với máy tính mục tiêu, và nó có được coi là một cuộc tấn công mạng không?",,short_answer,,,,,"Làm treo hoặc đóng băng máy tính tạm thời; Có, nó được coi là một cuộc tấn công mạng.",
-"Trong ngôn ngữ lập trình Python, ba đặc tính cơ bản của một tập hợp (set) là gì?",,short_answer,,,,,"Không có thứ tự, không thể thay đổi, không có chỉ mục (Unordered, unchangeable, unindexed)",
-Mục đích chính của tường lửa trong hệ thống an ninh mạng là gì?,,short_answer,,,,,Đóng vai trò rào chắn kiểm tra lưu lượng vào/ra và chặn truy cập trái phép dựa trên các quy tắc bảo mật.,
-"Tấn công Trojan là gì, và nó khác biệt cơ bản như thế nào so với virus máy tính?",,short_answer,,,,,"Trojan ngụy trang thành phần mềm hợp pháp và không tự nhân bản, trong khi virus có khả năng tự nhân bản.",
-Giải thích điểm khác biệt chính giữa mã hóa khóa đối xứng và mã hóa khóa bất đối xứng về việc sử dụng khóa.,,short_answer,,,,,"Mã hóa đối xứng dùng chung một khóa bí mật cho cả mã hóa và giải mã, còn mã hóa bất đối xứng dùng cặp khóa công khai và khóa riêng tư.",
-Giao thức mạng nào chịu trách nhiệm chính trong việc cấp phát địa chỉ IP động cho các thiết bị trong mạng cục bộ?,,short_answer,,,,,DHCP (Dynamic Host Configuration Protocol),
-Từ viết tắt HTML là viết tắt của cụm từ nào?,,short_answer,,,,,HyperText Markup Language,
-Vai trò của phần tải trọng (payload) trong một cuộc tấn công Trojan là gì?,,short_answer,,,,,Payload là đoạn mã độc hại thực sự thực thi các hành động phá hoại hoặc cấp quyền điều khiển trái phép trên hệ thống.,
-Mô hình bộ giao thức TCP/IP chuẩn có bao nhiêu tầng (layer)?,,short_answer,,,,,4 tầng (4 layers),
-Điểm khác biệt cơ bản giữa tấn công Phishing và Pharming là gì?,,short_answer,,,,,"Phishing lừa người dùng qua tin nhắn giả mạo, còn Pharming âm thầm chuyển hướng người dùng sang web giả mạo qua can thiệp DNS/định tuyến.",
-Giải mã bản mã 'uftbxogdqlzhchmg' bằng mật mã Caesar dịch lùi một ký tự (shift -1).,,short_answer,,,,,vgucyphermaidinh,true
-Danh từ tiếng Đức mang nghĩa 'thư viện' là gì?,,short_answer,,,,,Bibliothek,
+Thành phần nào chủ yếu thực thi các lệnh của chương trình máy tính?,,multiple choice,PSU,RAM,SSD,CPU,CPU,
+Vai trò chính của RAM trong quá trình sử dụng máy tính thông thường là gì?,,multiple choice,Lưu dữ liệu của chương trình đang hoạt động,Lưu tệp khi không có điện,Thực hiện các lệnh tính toán số học của chương trình,Cung cấp điện năng cho máy hoạt động,Lưu dữ liệu của chương trình đang hoạt động,
+Một byte gồm bao nhiêu bit?,,multiple choice,16 bit,8 bit,4 bit,32 bit,8 bit,
+"Khi mở một trang web, DNS chủ yếu được dùng để làm gì?",,multiple choice,Gán địa chỉ IP cho thiết bị,Lưu các trang đã được trình duyệt lưu lại,Tìm địa chỉ IP của tên miền,Mã hóa lưu lượng web của trình duyệt,Tìm địa chỉ IP của tên miền,
+Mục nào sau đây là một hệ điều hành?,,multiple choice,Windows,Python,Chrome,Word,Windows,
+Thiết bị lưu trữ nào không có bộ phận cơ học chuyển động?,,multiple choice,HDD,Ổ đĩa DVD,Ổ băng từ,SSD,SSD,
+Cặp nào liệt kê đầy đủ các chữ số được dùng trong hệ nhị phân?,,multiple choice,1 và 9,0 và 1,1 và 2,0 và 9,0 và 1,
+Giá trị 12 thuộc kiểu dữ liệu nào trong Python 3?,,multiple choice,int,float,str,bool,int,
+Ký hiệu nào bắt đầu một chú thích trong Python 3?,,multiple choice,--,//,#,/*,#,
+Giá trị nào sau đây là một chuỗi trong Python 3?,,multiple choice,25,2.5,True,"""25""","""25""",
+Số nhị phân 0110 có giá trị bằng bao nhiêu trong hệ thập phân?,,multiple choice,8,6,4,12,6,
+Bạn lưu một tệp vào SSD rồi tắt máy đúng cách. Tệp đã lưu vẫn nằm ở đâu?,,multiple choice,ROM,CPU,RAM,SSD,SSD,
+Một trình duyệt yêu cầu máy chủ web cung cấp một trang. Trình duyệt đóng vai trò gì?,,multiple choice,Máy chủ (Server),Bộ định tuyến (Router),Máy khách (Client),Bộ chuyển mạch (Switch),Máy khách (Client),
+Địa chỉ nào là địa chỉ IPv4 hợp lệ ở dạng thập phân phân tách bằng dấu chấm?,,multiple choice,192.168.1,192.168.1.5,192.168.1.5.2,192.168.1.300,192.168.1.5,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+x = 4
+x = x + 3
+print(x)",,multiple choice,4,43,7,3,7,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))",,multiple choice,7,14,10,11,11,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(not True, True or False)",,multiple choice,True True,True False,False True,False False,False True,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(7 // 2)",,multiple choice,1,3,3.5,4,3,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+numbers = [10, 20, 30]
+print(numbers[1])",,multiple choice,20,1,10,30,20,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)",,multiple choice,6,10,3,4,6,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)",,multiple choice,"[1, 2]","[9, 9]","[9, 2]","[1, 9]","[9, 2]",
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)",,multiple choice,cat,catcats,s,cats,cat,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(-7 // 2)",,multiple choice,3,-4,-3.5,-3,-4,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))",,multiple choice,TypeError,None,5,0,None,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(5 == ""5"", 5 == 5.0)",,multiple choice,True False,True True,False False,False True,False True,
+Cần tối thiểu bao nhiêu bit để biểu diễn mọi số nguyên từ 0 đến 300 trong hệ nhị phân không dấu?,,multiple choice,8 bit,9 bit,16 bit,10 bit,9 bit,
+"Khi chỉ dùng đúng 4 bit, kết quả còn lại là gì sau khi cộng 1 vào số nhị phân 1111 và bỏ bit nhớ vượt quá 4 bit?",,multiple choice,0000,1110,0001,1111,0000,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)",,multiple choice,3,6,2,4,2,
+Một trang web sử dụng HTTPS. Chỉ riêng việc sử dụng HTTPS cho phép kết luận điều nào sau đây?,,multiple choice,Lưu lượng của kết nối được mã hóa,Các tệp tải xuống từ trang web đều vô hại,Chủ sở hữu trang web đáng tin cậy,Thông tin trên trang web là chính xác,Lưu lượng của kết nối được mã hóa,
+"Ở tốc độ 80 Mb/s, cần bao nhiêu giây để truyền 40 MB dữ liệu? Dùng đơn vị thập phân và bỏ qua phần dữ liệu phụ trợ (overhead).",,multiple choice,8 giây,0.5 giây,40 giây,4 giây,4 giây,
+RAM là viết tắt của cụm từ nào?,,short_answer,,,,,Random Access Memory,
+ROM là viết tắt của cụm từ nào?,,short_answer,,,,,Read-Only Memory,
+"Một bàn phím Windows đầy đủ truyền thống theo bố cục US ANSI có bao nhiêu phím, không tính các phím đa phương tiện hoặc macro bổ sung?",,short_answer,,,,,104,
+HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ngữ của HTML.,,short_answer,,,,,Không. HTML là ngôn ngữ đánh dấu.,
+CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,Ngôn ngữ định kiểu.,
+Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,"Python, Java, C, JavaScript.",
+Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,Bậc cao và bậc thấp.,
+"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,Internet Protocol,
+Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,print(),
+Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,bool,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(int(""12"") + 3)",,short_answer,,,,,15,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(""go"" * 3)",,short_answer,,,,,gogogo,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(len(""Hi all""))",,short_answer,,,,,6,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")",,short_answer,,,,,Pass,
+"Trong một câu ngắn, hãy nêu điểm khác nhau giữa biên dịch và thông dịch.",,short_answer,,,,,Biên dịch tạo ra mã đã được dịch; thông dịch thực thi mã nguồn hoặc mã trung gian.,
+"Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,str,
+Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,1101,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(17 % 5)",,short_answer,,,,,2,
+Máy chủ gửi lại cho trình duyệt một trang web đã được yêu cầu. Thông điệp đó là yêu cầu (request) hay phản hồi (response)?,,short_answer,,,,,Phản hồi (Response),
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)",,short_answer,,,,,3,
+"Trong Python 3, tại sao biểu thức 0.1 + 0.2 == 0.3 cho kết quả False? Trả lời bằng một câu ngắn.",,short_answer,,,,,Sai số làm tròn của số dấu phẩy động nhị phân khiến các giá trị tính được chênh lệch một chút.,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(bool(""False""))",,short_answer,,,,,True,
+"Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+print(""5"" + 2)",,short_answer,,,,,TypeError,
+"Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+values = [1, 2]
+print(values[2])",,short_answer,,,,,IndexError,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)",,short_answer,,,,,"[1, 2]",
+"Trong Python 3, tại sao phép gán word[0] = ""C"" thất bại khi word = ""cat""?",,short_answer,,,,,Chuỗi là bất biến.,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+values = [1, 2]
+result = values.append(3)
+print(result)",,short_answer,,,,,None,
+"Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)",,short_answer,,,,,6,
+Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
+Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,"Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",

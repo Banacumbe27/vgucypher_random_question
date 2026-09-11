@@ -3,49 +3,243 @@
  * Strict Monochrome Engine with Password Lock, Animated NEXT Action & Hand-Drawn SVG Ticks/Crosses
  */
 
-const CSV_DATA_EN = `question_title,image,type,choice_1,choice_2,choice_3,choice_4,correct_answer,ignore_ai
-You delete a file and empty the Recycle Bin. Has the file completely disappeared from the hard drive?,,multiple choice,"Yes, once deleted it is gone forever and cannot be recovered.","Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",Only if the storage device is a Solid State Drive (SSD).,Only if you also delete the file from Google Drive.,"Not necessarily — the data usually remains on the disk until overwritten, and can often be recovered with the right tools.",
-You open your browser in Incognito/Private mode to search for information. Who CANNOT see your browsing history?,,multiple choice,Your Internet Service Provider (ISP),Your company or school network administrator,Someone else using the same computer afterward,The website you are visiting,Someone else using the same computer afterward,
-"You turn on a VPN while browsing. Does this mean no one can see what you are doing online, not even the VPN provider?",,multiple choice,"True, a VPN makes you completely anonymous to everyone on the internet.","False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.","True, a VPN encrypts data so that nobody can see it, including the VPN service provider.","False, a VPN is only used to change your IP address for streaming regional media.","False, a VPN only hides your activity from your ISP and local network outsiders — the VPN provider itself can still see your traffic.",
-"A website asks for your password, then sends a verification code to your email account (which uses the exact same password). Is this true two-factor authentication (2FA)?",,multiple choice,"Yes, because authentication consists of two sequential verification steps.","No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.","Yes, because email verification is managed by an independent third-party provider.","No, because email verification can never be considered an authentication mechanism.","No, because both steps rely on the same factor category (something you know), rather than two distinct factor types.",
-A company has a firewall installed. An employee still gets infected with malware by opening a malicious email attachment. Did the firewall fail?,,multiple choice,"Yes, firewalls are designed to detect and block all cyber threats.","No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.","Yes, this security incident proves the firewall is defective.","No, firewalls are intended strictly to replace antivirus software.","No, firewalls control network traffic based on rules — they do not inspect email attachments or stop user execution actions.",
-An online service you use announces a data breach. You immediately change your password for that service. Are you safe now?,,multiple choice,"Yes, updating the password on the breached service is completely sufficient.","Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.","No, you must permanently delete the compromised account.","No, you must also change your primary email address to regain security.","Not necessarily — if you reused that same password on other accounts, those accounts are still at high risk.",
-A website address begins with 'https://' and displays a padlock icon. Does this guarantee that the website is completely safe and trustworthy?,,multiple choice,"Yes, the padlock confirms that the website owner is fully legitimate and verified.","No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.","Yes, HTTPS technology automatically scans and blocks all phishing scripts and malware.","No, HTTPS is an obsolete protocol that provides no active security benefits.","No, HTTPS only encrypts communication in transit between the browser and the server; it does not guarantee the site itself is benign or trustworthy.",
-"You receive an account verification email appearing to be from PayPal with authentic logos and professional formatting, sent from 'support@paypa1.com'. What is the most suspicious indicator that this is phishing?",,multiple choice,The inclusion of an authentic PayPal logo,The professional layout and formal wording,The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1'),The request being delivered via an electronic email service,The misspelled domain name ('paypa1.com' replacing the letter 'l' with the number '1'),
-"What does a zip bomb do to a target computer, and is it classified as a cyber attack?",,short_answer,,,,,"It temporarily crashes or freezes the computer; Yes, it is considered a cyber attack.",
-"In the Python programming language, what are the three fundamental properties of a set?",,short_answer,,,,,"Unordered, unchangeable, unindexed",
-What is the primary purpose of a firewall in a network security system?,,short_answer,,,,,To act as a digital barrier inspecting incoming and outgoing traffic and blocking unauthorized access based on security rules.,
-"What is a Trojan attack, and how does it differ fundamentally from a computer virus?",,short_answer,,,,,"A Trojan disguises itself as a legitimate application and does not replicate automatically, whereas a virus self-replicates.",
-Explain the primary difference between symmetric key encryption and asymmetric key encryption regarding key usage.,,short_answer,,,,,"Symmetric encryption uses a single shared key for both encryption and decryption, whereas asymmetric encryption uses a public-private key pair.",
-Which network protocol is primarily responsible for assigning dynamic IP addresses to devices on a local network?,,short_answer,,,,,DHCP (Dynamic Host Configuration Protocol),
-What does the acronym HTML stand for?,,short_answer,,,,,HyperText Markup Language,
-What is the role of a payload in a Trojan attack?,,short_answer,,,,,The payload is the actual malicious code that executes harmful actions or grants unauthorized control on the infected system.,
-How many layers are in the standard TCP/IP protocol suite?,,short_answer,,,,,4 layers,
-What is the fundamental difference between phishing and pharming?,,short_answer,,,,,"Phishing tricks users via fraudulent messages to steal confidential information, while pharming silently redirects users from legitimate addresses to spoofed websites.",
-Decrypt the ciphertext 'uftbxogdqlzhchmg' using a Caesar cipher shifted one character backward (shift -1).,,short_answer,,,,,vgucyphermaidinh,true
-What is the German noun for 'library'?,,short_answer,,,,,Bibliothek,`;
+const MAIN_QUESTIONS_CSV = `question_title_en,question_title_vi,image,type,choice_1_en,choice_1_vi,choice_2_en,choice_2_vi,choice_3_en,choice_3_vi,choice_4_en,choice_4_vi,correct_answer_en,correct_answer_vi,ignore_ai
+Which component primarily executes a computer's program instructions?,Thành phần nào chủ yếu thực thi các lệnh của chương trình máy tính?,,multiple choice,PSU,PSU,RAM,RAM,SSD,SSD,CPU,CPU,CPU,CPU,
+What is the main role of RAM during normal computer use?,Vai trò chính của RAM trong quá trình sử dụng máy tính thông thường là gì?,,multiple choice,Hold active program data,Lưu dữ liệu của chương trình đang hoạt động,Store files without power,Lưu tệp khi không có điện,Execute arithmetic program instructions,Thực hiện các lệnh tính toán số học của chương trình,Supply electrical operating power,Cung cấp điện năng cho máy hoạt động,Hold active program data,Lưu dữ liệu của chương trình đang hoạt động,
+How many bits make up one byte?,Một byte gồm bao nhiêu bit?,,multiple choice,16 bits,16 bit,8 bits,8 bit,4 bits,4 bit,32 bits,32 bit,8 bits,8 bit,
+What is DNS mainly used for when opening a website?,"Khi mở một trang web, DNS chủ yếu được dùng để làm gì?",,multiple choice,Assigning a device's IP address,Gán địa chỉ IP cho thiết bị,Storing a browser's saved pages,Lưu các trang đã được trình duyệt lưu lại,Finding a domain's IP address,Tìm địa chỉ IP của tên miền,Encrypting a browser's web traffic,Mã hóa lưu lượng web của trình duyệt,Finding a domain's IP address,Tìm địa chỉ IP của tên miền,
+Which item is an operating system?,Mục nào sau đây là một hệ điều hành?,,multiple choice,Windows,Windows,Python,Python,Chrome,Chrome,Word,Word,Windows,Windows,
+Which storage device has no moving mechanical parts?,Thiết bị lưu trữ nào không có bộ phận cơ học chuyển động?,,multiple choice,HDD,HDD,DVD drive,Ổ đĩa DVD,Tape drive,Ổ băng từ,SSD,SSD,SSD,SSD,
+Which pair lists all digits used in the binary number system?,Cặp nào liệt kê đầy đủ các chữ số được dùng trong hệ nhị phân?,,multiple choice,1 and 9,1 và 9,0 and 1,0 và 1,1 and 2,1 và 2,0 and 9,0 và 9,0 and 1,0 và 1,
+What is the type of the literal 12 in Python 3?,Giá trị 12 thuộc kiểu dữ liệu nào trong Python 3?,,multiple choice,int,int,float,float,str,str,bool,bool,int,int,
+Which symbol starts a comment in Python 3?,Ký hiệu nào bắt đầu một chú thích trong Python 3?,,multiple choice,--,--,//,//,#,#,/*,/*,#,#,
+Which Python 3 literal is a string?,Giá trị nào sau đây là một chuỗi trong Python 3?,,multiple choice,25,25,2.5,2.5,True,True,"""25""","""25""","""25""","""25""",
+What is binary 0110 in decimal?,Số nhị phân 0110 có giá trị bằng bao nhiêu trong hệ thập phân?,,multiple choice,8,8,6,6,4,4,12,12,6,6,
+"You save a file to an SSD, then shut down normally. Where does the saved file remain?",Bạn lưu một tệp vào SSD rồi tắt máy đúng cách. Tệp đã lưu vẫn nằm ở đâu?,,multiple choice,ROM,ROM,CPU,CPU,RAM,RAM,SSD,SSD,SSD,SSD,
+A browser asks a web server for a page. Which role does the browser play?,Một trình duyệt yêu cầu máy chủ web cung cấp một trang. Trình duyệt đóng vai trò gì?,,multiple choice,Server,Máy chủ (Server),Router,Bộ định tuyến (Router),Client,Máy khách (Client),Switch,Bộ chuyển mạch (Switch),Client,Máy khách (Client),
+Which is a valid IPv4 address in dotted-decimal form?,Địa chỉ nào là địa chỉ IPv4 hợp lệ ở dạng thập phân phân tách bằng dấu chấm?,,multiple choice,192.168.1,192.168.1,192.168.1.5,192.168.1.5,192.168.1.5.2,192.168.1.5.2,192.168.1.300,192.168.1.300,192.168.1.5,192.168.1.5,
+"What does this Python 3 code print?
 
-const CSV_DATA_VI = `question_title,image,type,choice_1,choice_2,choice_3,choice_4,correct_answer,ignore_ai
-Bạn xóa một tệp và dọn sạch Thùng rác (Recycle Bin). Tệp đó đã biến mất hoàn toàn khỏi ổ cứng chưa?,,multiple choice,"Có, một khi đã xóa thì tệp sẽ biến mất vĩnh viễn và không thể khôi phục.",Chưa chắc — dữ liệu thường vẫn còn trên đĩa cho đến khi bị ghi đè và thường có thể khôi phục bằng công cụ phù hợp.,Chỉ khi thiết bị lưu trữ là ổ cứng thể rắn (SSD).,Chỉ khi bạn cũng xóa tệp đó khỏi Google Drive.,Chưa chắc — dữ liệu thường vẫn còn trên đĩa cho đến khi bị ghi đè và thường có thể khôi phục bằng công cụ phù hợp.,
-Bạn mở trình duyệt ở chế độ Ẩn danh (Incognito/Private) để tìm kiếm thông tin. Ai KHÔNG THỂ xem lịch sử duyệt web của bạn?,,multiple choice,Nhà cung cấp dịch vụ Internet (ISP) của bạn,Quản trị viên mạng của công ty hoặc trường học,Người khác sử dụng cùng chiếc máy tính đó sau bạn,Trang web mà bạn đang truy cập,Người khác sử dụng cùng chiếc máy tính đó sau bạn,
-"Bạn bật VPN khi duyệt web. Điều này có đồng nghĩa không ai có thể thấy bạn làm gì trên mạng, kể cả nhà cung cấp VPN không?",,multiple choice,"Đúng, VPN giúp bạn ẩn danh hoàn toàn với tất cả mọi người trên internet.","Sai, VPN chỉ ẩn hoạt động của bạn khỏi ISP và mạng cục bộ — chính nhà cung cấp VPN vẫn có thể thấy lưu lượng truy cập của bạn.","Đúng, VPN mã hóa dữ liệu nên không ai có thể xem được, kể cả nhà cung cấp dịch vụ VPN.","Sai, VPN chỉ dùng để đổi địa chỉ IP nhằm xem nội dung bị giới hạn khu vực.","Sai, VPN chỉ ẩn hoạt động của bạn khỏi ISP và mạng cục bộ — chính nhà cung cấp VPN vẫn có thể thấy lưu lượng truy cập của bạn.",
-"Một trang web yêu cầu mật khẩu của bạn, sau đó gửi mã xác minh về email (vốn dùng chung chính mật khẩu đó). Đây có phải là xác thực hai yếu tố (2FA) thực sự không?",,multiple choice,"Có, vì quá trình xác thực gồm hai bước kiểm tra tuần tự.","Không, vì cả hai bước đều dựa trên cùng một loại yếu tố (điều bạn biết), thay vì hai loại yếu tố khác nhau.","Có, vì việc xác minh qua email được quản lý bởi một bên thứ ba độc lập.","Không, vì xác minh qua email không bao giờ được coi là cơ chế xác thực.","Không, vì cả hai bước đều dựa trên cùng một loại yếu tố (điều bạn biết), thay vì hai loại yếu tố khác nhau.",
-Một công ty đã cài đặt tường lửa. Một nhân viên vẫn bị nhiễm mã độc do mở tệp đính kèm độc hại trong email. Tường lửa có bị lỗi/thất bại không?,,multiple choice,"Có, tường lửa được thiết kế để phát hiện và ngăn chặn mọi mối đe dọa mạng.","Không, tường lửa kiểm soát lưu lượng mạng dựa trên quy tắc — nó không kiểm tra tệp đính kèm email hay ngăn chặn thao tác mở tệp của người dùng.","Có, sự cố an ninh này chứng minh tường lửa bị lỗi.","Không, tường lửa chỉ nhằm mục đích thay thế phần mềm diệt virus.","Không, tường lửa kiểm soát lưu lượng mạng dựa trên quy tắc — nó không kiểm tra tệp đính kèm email hay ngăn chặn thao tác mở tệp của người dùng.",
-Một dịch vụ trực tuyến bạn sử dụng thông báo bị rò rỉ dữ liệu. Bạn đổi ngay mật khẩu cho dịch vụ đó. Bạn đã an toàn chưa?,,multiple choice,"Có, việc cập nhật mật khẩu trên dịch vụ bị rò rỉ là hoàn toàn đủ.","Chưa chắc — nếu bạn dùng lại mật khẩu đó cho các tài khoản khác, những tài khoản kia vẫn có nguy cơ bị xâm nhập rất cao.","Chưa, bạn phải xóa vĩnh viễn tài khoản bị lộ đó.","Chưa, bạn phải đổi cả địa chỉ email chính để lấy lại an toàn.","Chưa chắc — nếu bạn dùng lại mật khẩu đó cho các tài khoản khác, những tài khoản kia vẫn có nguy cơ bị xâm nhập rất cao.",
-Địa chỉ trang web bắt đầu bằng 'https://' và hiển thị biểu tượng ổ khóa. Điều này có đảm bảo trang web hoàn toàn an toàn và đáng tin cậy không?,,multiple choice,"Có, ổ khóa xác nhận chủ sở hữu trang web hoàn toàn hợp pháp và đã được xác minh.","Không, HTTPS chỉ mã hóa đường truyền giữa trình duyệt và máy chủ; nó không đảm bảo bản thân trang web là lành tính hay đáng tin cậy.","Có, công nghệ HTTPS tự động quét và chặn mọi mã độc cùng tập lệnh lừa đảo.","Không, HTTPS là một giao thức lỗi thời không mang lại lợi ích bảo mật nào.","Không, HTTPS chỉ mã hóa đường truyền giữa trình duyệt và máy chủ; nó không đảm bảo bản thân trang web là lành tính hay đáng tin cậy.",
-"Bạn nhận được email xác minh tài khoản trông như từ PayPal với logo chuẩn và định dạng chuyên nghiệp, gửi từ 'support@paypa1.com'. Dấu hiệu đáng ngờ nhất cho thấy đây là lừa đảo (phishing) là gì?",,multiple choice,Sự xuất hiện của logo PayPal chính hãng,Bố cục chuyên nghiệp và ngôn từ trang trọng,Tên miền bị viết sai chính tả ('paypa1.com' thay chữ 'l' bằng số '1'),Yêu cầu được gửi thông qua dịch vụ thư điện tử,Tên miền bị viết sai chính tả ('paypa1.com' thay chữ 'l' bằng số '1'),
-"Tệp nén 'zip bomb' làm gì với máy tính mục tiêu, và nó có được coi là một cuộc tấn công mạng không?",,short_answer,,,,,"Làm treo hoặc đóng băng máy tính tạm thời; Có, nó được coi là một cuộc tấn công mạng.",
-"Trong ngôn ngữ lập trình Python, ba đặc tính cơ bản của một tập hợp (set) là gì?",,short_answer,,,,,"Không có thứ tự, không thể thay đổi, không có chỉ mục (Unordered, unchangeable, unindexed)",
-Mục đích chính của tường lửa trong hệ thống an ninh mạng là gì?,,short_answer,,,,,Đóng vai trò rào chắn kiểm tra lưu lượng vào/ra và chặn truy cập trái phép dựa trên các quy tắc bảo mật.,
-"Tấn công Trojan là gì, và nó khác biệt cơ bản như thế nào so với virus máy tính?",,short_answer,,,,,"Trojan ngụy trang thành phần mềm hợp pháp và không tự nhân bản, trong khi virus có khả năng tự nhân bản.",
-Giải thích điểm khác biệt chính giữa mã hóa khóa đối xứng và mã hóa khóa bất đối xứng về việc sử dụng khóa.,,short_answer,,,,,"Mã hóa đối xứng dùng chung một khóa bí mật cho cả mã hóa và giải mã, còn mã hóa bất đối xứng dùng cặp khóa công khai và khóa riêng tư.",
-Giao thức mạng nào chịu trách nhiệm chính trong việc cấp phát địa chỉ IP động cho các thiết bị trong mạng cục bộ?,,short_answer,,,,,DHCP (Dynamic Host Configuration Protocol),
-Từ viết tắt HTML là viết tắt của cụm từ nào?,,short_answer,,,,,HyperText Markup Language,
-Vai trò của phần tải trọng (payload) trong một cuộc tấn công Trojan là gì?,,short_answer,,,,,Payload là đoạn mã độc hại thực sự thực thi các hành động phá hoại hoặc cấp quyền điều khiển trái phép trên hệ thống.,
-Mô hình bộ giao thức TCP/IP chuẩn có bao nhiêu tầng (layer)?,,short_answer,,,,,4 tầng (4 layers),
-Điểm khác biệt cơ bản giữa tấn công Phishing và Pharming là gì?,,short_answer,,,,,"Phishing lừa người dùng qua tin nhắn giả mạo, còn Pharming âm thầm chuyển hướng người dùng sang web giả mạo qua can thiệp DNS/định tuyến.",
-Giải mã bản mã 'uftbxogdqlzhchmg' bằng mật mã Caesar dịch lùi một ký tự (shift -1).,,short_answer,,,,,vgucyphermaidinh,true
-Danh từ tiếng Đức mang nghĩa 'thư viện' là gì?,,short_answer,,,,,Bibliothek,`;
+x = 4
+x = x + 3
+print(x)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+x = 4
+x = x + 3
+print(x)",,multiple choice,4,4,43,43,7,7,3,3,7,7,
+"What does this Python 3 code print?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))",,multiple choice,7,7,14,14,10,10,11,11,11,11,
+"What does this Python 3 code print?
+
+print(not True, True or False)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(not True, True or False)",,multiple choice,True True,True True,True False,True False,False True,False True,False False,False False,False True,False True,
+"What does this Python 3 code print?
+
+print(7 // 2)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(7 // 2)",,multiple choice,1,1,3,3,3.5,3.5,4,4,3,3,
+"What does this Python 3 code print?
+
+numbers = [10, 20, 30]
+print(numbers[1])","Đoạn mã Python 3 sau in ra kết quả gì?
+
+numbers = [10, 20, 30]
+print(numbers[1])",,multiple choice,20,20,1,1,10,10,30,30,20,20,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)",,multiple choice,6,6,10,10,3,3,4,4,6,6,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)",,multiple choice,"[1, 2]","[1, 2]","[9, 9]","[9, 9]","[9, 2]","[9, 2]","[1, 9]","[1, 9]","[9, 2]","[9, 2]",
+"What does this Python 3 code print?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)",,multiple choice,cat,cat,catcats,catcats,s,s,cats,cats,cat,cat,
+"What does this Python 3 code print?
+
+print(-7 // 2)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(-7 // 2)",,multiple choice,3,3,-4,-4,-3.5,-3.5,-3,-3,-4,-4,
+"What does this Python 3 code print?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))",,multiple choice,TypeError,TypeError,None,None,5,5,0,0,None,None,
+"What does this Python 3 code print?
+
+print(5 == ""5"", 5 == 5.0)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(5 == ""5"", 5 == 5.0)",,multiple choice,True False,True False,True True,True True,False False,False False,False True,False True,False True,False True,
+What is the minimum number of bits needed to represent every integer from 0 through 300 in unsigned binary?,Cần tối thiểu bao nhiêu bit để biểu diễn mọi số nguyên từ 0 đến 300 trong hệ nhị phân không dấu?,,multiple choice,8 bits,8 bit,9 bits,9 bit,16 bits,16 bit,10 bits,10 bit,9 bits,9 bit,
+"Using exactly 4 bits, what remains after adding 1 to binary 1111 and discarding the extra carry bit?","Khi chỉ dùng đúng 4 bit, kết quả còn lại là gì sau khi cộng 1 vào số nhị phân 1111 và bỏ bit nhớ vượt quá 4 bit?",,multiple choice,0000,0000,1110,1110,0001,0001,1111,1111,0000,0000,
+"What does this Python 3 code print?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)",,multiple choice,3,3,6,6,2,2,4,4,2,2,
+A page uses HTTPS. Which conclusion is justified by HTTPS alone?,Một trang web sử dụng HTTPS. Chỉ riêng việc sử dụng HTTPS cho phép kết luận điều nào sau đây?,,multiple choice,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,The website's downloads are harmless,Các tệp tải xuống từ trang web đều vô hại,The website's owner is trustworthy,Chủ sở hữu trang web đáng tin cậy,The website's information is accurate,Thông tin trên trang web là chính xác,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,
+"At 80 Mb/s, how many seconds are needed to transfer 40 MB? Use decimal units and ignore overhead.","Ở tốc độ 80 Mb/s, cần bao nhiêu giây để truyền 40 MB dữ liệu? Dùng đơn vị thập phân và bỏ qua phần dữ liệu phụ trợ (overhead).",,multiple choice,8 seconds,8 giây,0.5 seconds,0.5 giây,40 seconds,40 giây,4 seconds,4 giây,4 seconds,4 giây,
+What does RAM stand for?,RAM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Random Access Memory,Random Access Memory,
+What does ROM stand for?,ROM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Read-Only Memory,Read-Only Memory,
+"How many keys does a traditional full-size US ANSI Windows keyboard have, excluding extra media or macro keys?","Một bàn phím Windows đầy đủ truyền thống theo bố cục US ANSI có bao nhiêu phím, không tính các phím đa phương tiện hoặc macro bổ sung?",,short_answer,,,,,,,,,104,104,
+Is HTML a programming language? Name its language category.,HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ngữ của HTML.,,short_answer,,,,,,,,,No. It is a markup language.,Không. HTML là ngôn ngữ đánh dấu.,
+What type of language is CSS?,CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,,,,,Style sheet language.,Ngôn ngữ định kiểu.,
+Name four programming languages.,Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,,,,,"Python, Java, C, JavaScript.","Python, Java, C, JavaScript.",
+Name the two broad programming-language levels used in introductory classifications.,Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,,,,,High-level and low-level.,Bậc cao và bậc thấp.,
+What does IP stand for in computer networking?,"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,,,,,Internet Protocol,Internet Protocol,
+Which Python 3 built-in function displays text in the console?,Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,,,,,print(),print(),
+What is the name of the Python 3 built-in type with values True and False?,Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,,,,,bool,bool,
+"What does this Python 3 code print?
+
+print(int(""12"") + 3)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(int(""12"") + 3)",,short_answer,,,,,,,,,15,15,
+"What does this Python 3 code print?
+
+print(""go"" * 3)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(""go"" * 3)",,short_answer,,,,,,,,,gogogo,gogogo,
+"What does this Python 3 code print?
+
+print(len(""Hi all""))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(len(""Hi all""))",,short_answer,,,,,,,,,6,6,
+"What does this Python 3 code print?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")","Đoạn mã Python 3 sau in ra kết quả gì?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")",,short_answer,,,,,,,,,Pass,Pass,
+"In one short sentence, how does compilation differ from interpretation?","Trong một câu ngắn, hãy nêu điểm khác nhau giữa biên dịch và thông dịch.",,short_answer,,,,,,,,,Compilation produces translated code; interpretation executes source or intermediate code.,Biên dịch tạo ra mã đã được dịch; thông dịch thực thi mã nguồn hoặc mã trung gian.,
+"Which type does input() return in Python 3, even when the user types digits?","Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,,,,,str,str,
+Convert decimal 13 to binary.,Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,,,,,1101,1101,
+"What does this Python 3 code print?
+
+print(17 % 5)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(17 % 5)",,short_answer,,,,,,,,,2,2,
+A server sends a requested web page back to a browser. Is that message a request or a response?,Máy chủ gửi lại cho trình duyệt một trang web đã được yêu cầu. Thông điệp đó là yêu cầu (request) hay phản hồi (response)?,,short_answer,,,,,,,,,Response,Phản hồi (Response),
+"What does this Python 3 code print?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)",,short_answer,,,,,,,,,3,3,
+"In Python 3, why is 0.1 + 0.2 == 0.3 False? Use one short sentence.","Trong Python 3, tại sao biểu thức 0.1 + 0.2 == 0.3 cho kết quả False? Trả lời bằng một câu ngắn.",,short_answer,,,,,,,,,Binary floating-point rounding makes these computed values slightly different.,Sai số làm tròn của số dấu phẩy động nhị phân khiến các giá trị tính được chênh lệch một chút.,
+"What does this Python 3 code print?
+
+print(bool(""False""))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(bool(""False""))",,short_answer,,,,,,,,,True,True,
+"Which exception does this Python 3 code raise?
+
+print(""5"" + 2)","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+print(""5"" + 2)",,short_answer,,,,,,,,,TypeError,TypeError,
+"Which exception does this Python 3 code raise?
+
+values = [1, 2]
+print(values[2])","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+values = [1, 2]
+print(values[2])",,short_answer,,,,,,,,,IndexError,IndexError,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)",,short_answer,,,,,,,,,"[1, 2]","[1, 2]",
+"In Python 3, why does word[0] = ""C"" fail when word = ""cat""?","Trong Python 3, tại sao phép gán word[0] = ""C"" thất bại khi word = ""cat""?",,short_answer,,,,,,,,,Strings are immutable.,Chuỗi là bất biến.,
+"What does this Python 3 code print?
+
+values = [1, 2]
+result = values.append(3)
+print(result)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+values = [1, 2]
+result = values.append(3)
+print(result)",,short_answer,,,,,,,,,None,None,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)",,short_answer,,,,,,,,,6,6,
+"A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,No. IP connectivity works; name resolution may be failing.,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
+Can a language implementation both compile and interpret the same program? Briefly explain.,Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.","Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",`;
 
 // Safe event listener helper
 function on(el, event, handler) {
@@ -75,6 +269,15 @@ const state = {
     lockPassword: (function() {
         try { return localStorage.getItem('cypher_lock_password') || 'duypher67'; } catch (e) { return 'duypher67'; }
     })(),
+    lockModalContext: 'toggle', // 'toggle' or 'restart'
+    session: {
+        targetCount: 5,
+        answeredCount: 0,
+        correctCount: 0,
+        wrongCount: 0,
+        history: [], // { questionIdx, questionEn, questionVi, title, userAnswer, correctAnswer, isCorrect, percentage, type }
+        isGameOver: false
+    },
     hasAnsweredCurrent: false,
     currentAnswerState: {
         answered: false,
@@ -126,13 +329,32 @@ function getElements() {
         loadPastedCsvBtn: document.getElementById('loadPastedCsvBtn'),
         loadSampleCsvBtn: document.getElementById('loadSampleCsvBtn'),
 
-        // Lock Modal
+        // Password Lock Modal
         lockModal: document.getElementById('lockModal'),
         lockModalTitle: document.getElementById('lockModalTitle'),
         lockPasswordInput: document.getElementById('lockPasswordInput'),
         lockErrorText: document.getElementById('lockErrorText'),
         cancelLockBtn: document.getElementById('cancelLockBtn'),
         confirmLockBtn: document.getElementById('confirmLockBtn'),
+
+        // Game Over Modal
+        gameOverModal: document.getElementById('gameOverModal'),
+        gameOverBadge: document.getElementById('gameOverBadge'),
+        gameOverTitle: document.getElementById('gameOverTitle'),
+        gameOverSubtitle: document.getElementById('gameOverSubtitle'),
+        finalScoreNum: document.getElementById('finalScoreNum'),
+        finalScoreTotal: document.getElementById('finalScoreTotal'),
+        finalScorePct: document.getElementById('finalScorePct'),
+        statAnswered: document.getElementById('statAnswered'),
+        statAnsweredLbl: document.getElementById('statAnsweredLbl'),
+        statCorrect: document.getElementById('statCorrect'),
+        statCorrectLbl: document.getElementById('statCorrectLbl'),
+        statWrong: document.getElementById('statWrong'),
+        statWrongLbl: document.getElementById('statWrongLbl'),
+        breakdownTitle: document.getElementById('breakdownTitle'),
+        roundBreakdownList: document.getElementById('roundBreakdownList'),
+        restartGameBtn: document.getElementById('restartGameBtn'),
+        restartBtnText: document.getElementById('restartBtnText'),
 
         // Lightbox
         imageLightbox: document.getElementById('imageLightbox'),
@@ -171,14 +393,39 @@ function getAnimatedCrossSvg(size = 44) {
    ========================================================================== */
 
 function initLanguage() {
-    state.questionsEn = processQuestionRows(parseCSV(CSV_DATA_EN));
-    state.questionsVi = processQuestionRows(parseCSV(CSV_DATA_VI));
+    const parsed = parseBilingualCSV(MAIN_QUESTIONS_CSV);
+    state.questionsEn = parsed.questionsEn;
+    state.questionsVi = parsed.questionsVi;
 
     state.questions = state.lang === 'VIE' ? state.questionsVi : state.questionsEn;
     state.unvisitedPool = state.questions.map((_, idx) => idx);
 
     applyLanguage(state.lang, true);
     on(elements.langToggleBtn, 'click', toggleLanguage);
+
+    // If served via HTTP, also asynchronously fetch main_questions.csv for hot updates
+    try {
+        fetch('main_questions.csv')
+            .then(res => {
+                if (res.ok) return res.text();
+                throw new Error('HTTP status ' + res.status);
+            })
+            .then(text => {
+                const dynamicParsed = parseBilingualCSV(text);
+                if (dynamicParsed && dynamicParsed.questionsEn.length > 0) {
+                    state.questionsEn = dynamicParsed.questionsEn;
+                    state.questionsVi = dynamicParsed.questionsVi;
+                    state.questions = state.lang === 'VIE' ? state.questionsVi : state.questionsEn;
+                    if (!state.hasAnsweredCurrent && state.session.answeredCount === 0) {
+                        state.unvisitedPool = state.questions.map((_, idx) => idx);
+                        randomizeQuestion();
+                    }
+                }
+            })
+            .catch(() => {
+                // Embedded question dataset serves as the offline/local file fallback
+            });
+    } catch (e) {}
 }
 
 function toggleLanguage() {
@@ -210,6 +457,25 @@ function applyLanguage(lang, isInitial = false) {
 
     if (elements.searchModal && !elements.searchModal.classList.contains('hidden')) {
         renderSearchResults();
+    }
+
+    if (state.session.isGameOver) {
+        updateGameOverLanguage();
+    }
+
+    // Update NEXT button text (Next / Finish in current language)
+    updateNextButtonText();
+}
+
+function updateNextButtonText() {
+    if (!elements.nextQuestionBtn) return;
+    const nextTextSpan = elements.nextQuestionBtn.querySelector('span:not(.hover-arrow)');
+    if (!nextTextSpan) return;
+
+    if (state.session.answeredCount >= state.session.targetCount) {
+        nextTextSpan.textContent = state.lang === 'VIE' ? 'HOÀN THÀNH' : 'FINISH';
+    } else {
+        nextTextSpan.textContent = 'NEXT';
     }
 }
 
@@ -253,64 +519,57 @@ function updateCurrentQuestionLanguage() {
                     elements.nextActionWrap.classList.remove('hidden');
                 }
             }
-        } else {
-            renderInteractiveArea(q);
         }
     } else {
-        // Short Answer: answer key stays the same, only the question changes
-        if (!ansState || !ansState.answered) {
-            const input = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-field') : null;
-            const submitBtn = elements.interactiveArea ? elements.interactiveArea.querySelector('.btn-solid') : null;
-            if (input) {
-                input.placeholder = state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...';
-                if (ansState && ansState.userText) {
-                    input.value = ansState.userText;
+        // Short Answer: if already answered, translate labels and commentary
+        if (ansState && ansState.answered) {
+            const resultDisplay = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-result-display') : null;
+            if (resultDisplay) {
+                const matchBadge = resultDisplay.querySelector('.sa-match-badge');
+                if (matchBadge) {
+                    matchBadge.textContent = `${ansState.percentage}% ${state.lang === 'VIE' ? 'khớp' : 'match'}`;
                 }
-            }
-            if (submitBtn) {
-                submitBtn.textContent = state.lang === 'VIE' ? 'Gửi' : 'Submit';
+
+                const aiBadge = resultDisplay.querySelector('.sa-ai-badge');
+                if (aiBadge) {
+                    if (ansState.isCorrect) {
+                        aiBadge.textContent = `${state.lang === 'VIE' ? 'Độ khớp' : 'Match score'}: ${ansState.percentage}%`;
+                    } else {
+                        aiBadge.textContent = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
+                    }
+                }
+
+                const aiCommentaryText = resultDisplay.querySelector('.sa-ai-commentary-text');
+                if (aiCommentaryText && ansState.ignore_ai) {
+                    aiCommentaryText.textContent = state.lang === 'VIE'
+                        ? 'Mật mã yêu cầu khớp chính xác từng ký tự/từ.'
+                        : 'Passcode requires an exact word-by-word match.';
+                }
+
+                const correctLabel = resultDisplay.querySelector('.sa-correct-label');
+                if (correctLabel) {
+                    correctLabel.textContent = state.lang === 'VIE' ? 'ĐÁP ÁN MẪU:' : 'CORRECT:';
+                }
+                const correctText = resultDisplay.querySelector('.sa-correct-text');
+                if (correctText) {
+                    correctText.textContent = q.correctAnswer;
+                }
             }
         } else {
-            // Already answered: update labels and reference answer to match the current language
-            const correctLabel = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-correct-label') : null;
-            if (correctLabel) {
-                correctLabel.textContent = state.lang === 'VIE' ? 'ĐÁP ÁN MẪU:' : 'CORRECT:';
+            const saField = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-field') : null;
+            if (saField) {
+                saField.placeholder = state.lang === 'VIE' ? 'Nhập câu trả lời của bạn tại đây...' : 'Type your answer here...';
             }
-            const correctText = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-correct-text') : null;
-            if (correctText) {
-                correctText.textContent = q.correctAnswer;
-            }
-            const commentaryBadge = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-ai-badge') : null;
-            if (commentaryBadge) {
-                if (ansState && ansState.isCorrect) {
-                    commentaryBadge.textContent = `${state.lang === 'VIE' ? 'Độ khớp' : 'Match score'}: ${ansState.percentage}%`;
-                } else {
-                    commentaryBadge.textContent = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
-                }
-            }
-            const matchBadge = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-match-badge') : null;
-            if (matchBadge && ansState && ansState.percentage !== undefined) {
-                matchBadge.textContent = `${ansState.percentage}% ${state.lang === 'VIE' ? 'khớp' : 'match'}`;
-            }
-            const matchPill = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-match-pill') : null;
-            if (matchPill && ansState && ansState.percentage !== undefined) {
-                matchPill.textContent = `${state.lang === 'VIE' ? 'Độ khớp' : 'Match'}: ${ansState.percentage}%`;
-            }
-            const commentaryText = elements.interactiveArea ? elements.interactiveArea.querySelector('.sa-ai-commentary-text') : null;
-            if (commentaryText && ansState && ansState.ignore_ai && !ansState.isCorrect) {
-                commentaryText.textContent = state.lang === 'VIE' 
-                    ? 'Mật mã yêu cầu khớp chính xác từng ký tự/từ.' 
-                    : 'Passcode requires an exact word-by-word match.';
-            }
-            if (elements.nextActionWrap) {
-                elements.nextActionWrap.classList.remove('hidden');
+            const submitBtn = elements.interactiveArea ? elements.interactiveArea.querySelector('.btn-solid') : null;
+            if (submitBtn) {
+                submitBtn.textContent = state.lang === 'VIE' ? 'Gửi' : 'Submit';
             }
         }
     }
 }
 
 /* ==========================================================================
-   Theme Management (Strict Monochrome)
+   Theme Management (Strict Monochrome: White Mode & Dark Mode)
    ========================================================================== */
 
 function initTheme() {
@@ -319,11 +578,12 @@ function initTheme() {
 }
 
 function toggleTheme() {
-    state.theme = state.theme === 'white' ? 'dark' : 'white';
-    applyTheme(state.theme);
+    const nextTheme = state.theme === 'white' ? 'dark' : 'white';
+    applyTheme(nextTheme);
 }
 
 function applyTheme(theme) {
+    state.theme = theme;
     document.documentElement.setAttribute('data-theme', theme);
     try {
         localStorage.setItem('cypher_theme', theme);
@@ -331,13 +591,13 @@ function applyTheme(theme) {
 
     if (elements.themeIcon) {
         if (theme === 'white') {
-            // Moon icon (click to switch to dark)
+            // Moon icon (to switch to Dark Mode)
             elements.themeIcon.innerHTML = `
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             `;
             if (elements.themeToggleBtn) elements.themeToggleBtn.title = 'Switch to Dark Mode';
         } else {
-            // Sun icon (click to switch to light)
+            // Sun icon (to switch to Light Mode)
             elements.themeIcon.innerHTML = `
                 <circle cx="12" cy="12" r="5"></circle>
                 <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -355,13 +615,16 @@ function applyTheme(theme) {
 }
 
 /* ==========================================================================
-   Password Lock System
+   Password Lock System & Restart Protection
    ========================================================================== */
 
 function initLockSystem() {
     updateLockUI();
 
-    on(elements.lockToggleBtn, 'click', openLockModal);
+    on(elements.lockToggleBtn, 'click', () => {
+        state.lockModalContext = 'toggle';
+        openLockModal();
+    });
     on(elements.cancelLockBtn, 'click', closeLockModal);
     on(elements.confirmLockBtn, 'click', handleLockConfirm);
 
@@ -371,6 +634,32 @@ function initLockSystem() {
             handleLockConfirm();
         }
     });
+
+    // Restart button handler
+    on(elements.restartGameBtn, 'click', openRestartUnlockModal);
+}
+
+function openRestartUnlockModal() {
+    state.lockModalContext = 'restart';
+    if (!elements.lockModal) return;
+    if (elements.lockErrorText) elements.lockErrorText.classList.add('hidden');
+    if (elements.lockPasswordInput) {
+        elements.lockPasswordInput.value = '';
+        elements.lockPasswordInput.placeholder = '';
+    }
+    elements.lockModal.classList.remove('hidden');
+
+    const isVi = state.lang === 'VIE';
+    if (elements.lockModalTitle) {
+        elements.lockModalTitle.textContent = isVi ? 'Mở Khóa Để Bắt Đầu Lại' : 'Unlock to Restart Session';
+    }
+    if (elements.confirmLockBtn) {
+        elements.confirmLockBtn.textContent = isVi ? 'Mở Khóa & Bắt Đầu' : 'Unlock & Restart';
+    }
+
+    if (elements.lockPasswordInput) {
+        setTimeout(() => elements.lockPasswordInput.focus(), 60);
+    }
 }
 
 function openLockModal() {
@@ -378,16 +667,16 @@ function openLockModal() {
     if (elements.lockErrorText) elements.lockErrorText.classList.add('hidden');
     if (elements.lockPasswordInput) {
         elements.lockPasswordInput.value = '';
-        elements.lockPasswordInput.placeholder = ''; // No placeholder text
+        elements.lockPasswordInput.placeholder = '';
     }
     elements.lockModal.classList.remove('hidden');
 
     if (state.isLocked) {
-        if (elements.lockModalTitle) elements.lockModalTitle.textContent = 'Unlock Controls';
-        if (elements.confirmLockBtn) elements.confirmLockBtn.textContent = 'Unlock';
+        if (elements.lockModalTitle) elements.lockModalTitle.textContent = state.lang === 'VIE' ? 'Mở Khóa Hệ Thống' : 'Unlock Controls';
+        if (elements.confirmLockBtn) elements.confirmLockBtn.textContent = state.lang === 'VIE' ? 'Mở Khóa' : 'Unlock';
     } else {
-        if (elements.lockModalTitle) elements.lockModalTitle.textContent = 'Lock Controls';
-        if (elements.confirmLockBtn) elements.confirmLockBtn.textContent = 'Lock';
+        if (elements.lockModalTitle) elements.lockModalTitle.textContent = state.lang === 'VIE' ? 'Khóa Hệ Thống' : 'Lock Controls';
+        if (elements.confirmLockBtn) elements.confirmLockBtn.textContent = state.lang === 'VIE' ? 'Khóa' : 'Lock';
     }
 
     if (elements.lockPasswordInput) {
@@ -402,6 +691,21 @@ function closeLockModal() {
 function handleLockConfirm() {
     const inputPass = elements.lockPasswordInput ? elements.lockPasswordInput.value.trim() : '';
 
+    if (state.lockModalContext === 'restart') {
+        if (inputPass === state.lockPassword) {
+            closeLockModal();
+            resetSessionAndRestart();
+        } else {
+            if (elements.lockErrorText) elements.lockErrorText.classList.remove('hidden');
+            if (elements.lockPasswordInput) {
+                elements.lockPasswordInput.focus();
+                elements.lockPasswordInput.select();
+            }
+        }
+        return;
+    }
+
+    // Default toggle lock behavior
     if (state.isLocked) {
         if (inputPass === state.lockPassword) {
             state.isLocked = false;
@@ -460,7 +764,7 @@ function updateLockUI() {
 }
 
 /* ==========================================================================
-   CSV Parser
+   Resilient Bilingual CSV Parser
    ========================================================================== */
 
 function parseCSV(text) {
@@ -520,95 +824,134 @@ function parseCSV(text) {
     return rows;
 }
 
-function processQuestionRows(rows) {
-    if (!rows || rows.length === 0) return [];
+function processBilingualRows(rows) {
+    if (!rows || rows.length === 0) return { questionsEn: [], questionsVi: [] };
 
     let startIndex = 0;
-    const headerRow = rows[0].map(c => c.toLowerCase().trim());
-    let ignoreAiColIdx = -1;
+    const headerRow = rows[0].map(c => c.toLowerCase().trim().replace(/[\s\-_]+/g, '_'));
 
-    if (headerRow[0].includes('question') || headerRow[2]?.includes('type')) {
-        startIndex = 1;
-        ignoreAiColIdx = headerRow.findIndex(h =>
-            h === 'ignore_ai' || h === 'ignore-ai' || h === 'ignore ai' || h === 'ignoreai'
-        );
+    const isHeader = headerRow.some(h => h.includes('question') || h.includes('title') || h.includes('type'));
+    if (isHeader) startIndex = 1;
+
+    function getColIdx(candidates) {
+        for (const cand of candidates) {
+            const idx = headerRow.findIndex(h => h === cand || h.includes(cand));
+            if (idx !== -1) return idx;
+        }
+        return -1;
     }
 
-    const parsedQuestions = [];
+    const titleEnIdx = getColIdx(['question_title_en', 'title_en', 'question_en', 'question_title', 'title', 'question']);
+    const titleViIdx = getColIdx(['question_title_vi', 'title_vi', 'question_vi']);
+    const imageIdx = getColIdx(['image', 'img', 'picture', 'photo']);
+    const typeIdx = getColIdx(['type', 'question_type']);
+    const ignoreAiIdx = getColIdx(['ignore_ai', 'ignoreai']);
+
+    const c1EnIdx = getColIdx(['choice_1_en', 'choice1_en', 'choice_1', 'choice1', 'option_1', 'option_a']);
+    const c1ViIdx = getColIdx(['choice_1_vi', 'choice1_vi']);
+    const c2EnIdx = getColIdx(['choice_2_en', 'choice2_en', 'choice_2', 'choice2', 'option_2', 'option_b']);
+    const c2ViIdx = getColIdx(['choice_2_vi', 'choice2_vi']);
+    const c3EnIdx = getColIdx(['choice_3_en', 'choice3_en', 'choice_3', 'choice3', 'option_3', 'option_c']);
+    const c3ViIdx = getColIdx(['choice_3_vi', 'choice3_vi']);
+    const c4EnIdx = getColIdx(['choice_4_en', 'choice4_en', 'choice_4', 'choice4', 'option_4', 'option_d']);
+    const c4ViIdx = getColIdx(['choice_4_vi', 'choice4_vi']);
+
+    const ansEnIdx = getColIdx(['correct_answer_en', 'correctanswer_en', 'answer_en', 'correct_answer', 'correctanswer', 'answer']);
+    const ansViIdx = getColIdx(['correct_answer_vi', 'correctanswer_vi', 'answer_vi']);
+
+    const questionsEn = [];
+    const questionsVi = [];
 
     for (let r = startIndex; r < rows.length; r++) {
         const row = rows[r];
         if (!row || row.length === 0) continue;
 
-        const title = row[0] || '';
-        if (!title.trim()) continue;
+        const rawTitleEn = titleEnIdx !== -1 ? (row[titleEnIdx] || '') : (row[0] || '');
+        const rawTitleVi = titleViIdx !== -1 ? (row[titleViIdx] || '') : rawTitleEn;
+        if (!rawTitleEn.trim() && !rawTitleVi.trim()) continue;
 
-        const image = (row[1] || '').trim();
-        const rawType = (row[2] || '').toLowerCase().trim();
+        const image = imageIdx !== -1 ? (row[imageIdx] || '').trim() : '';
+        const rawType = (typeIdx !== -1 ? (row[typeIdx] || '') : (row[2] || '')).toLowerCase().trim();
         const isMultipleChoice = rawType.includes('multiple') || rawType.includes('choice') || rawType === 'mc';
 
-        let choices = [];
-        let correctAnswer = '';
+        let choicesEn = [];
+        let choicesVi = [];
 
         if (isMultipleChoice) {
-            choices = [
-                row[3] || '',
-                row[4] || '',
-                row[5] || '',
-                row[6] || ''
-            ].map(c => c.trim()).filter(Boolean);
+            choicesEn = [
+                c1EnIdx !== -1 ? row[c1EnIdx] : (row[3] || ''),
+                c2EnIdx !== -1 ? row[c2EnIdx] : (row[4] || ''),
+                c3EnIdx !== -1 ? row[c3EnIdx] : (row[5] || ''),
+                c4EnIdx !== -1 ? row[c4EnIdx] : (row[6] || '')
+            ].map(c => (c || '').trim()).filter(Boolean);
 
-            correctAnswer = (row[7] || '').trim();
-            if (!correctAnswer && row.length > 7) {
-                correctAnswer = (row[row.length - 1] || '').trim();
-            }
-        } else {
-            if (row[7] && row[7].trim()) {
-                correctAnswer = row[7].trim();
-            } else {
-                for (let c = 3; c < row.length; c++) {
-                    if (row[c] && row[c].trim()) {
-                        correctAnswer = row[c].trim();
-                        break;
-                    }
+            choicesVi = [
+                c1ViIdx !== -1 ? row[c1ViIdx] : (c1EnIdx !== -1 ? row[c1EnIdx] : (row[3] || '')),
+                c2ViIdx !== -1 ? row[c2ViIdx] : (c2EnIdx !== -1 ? row[c2EnIdx] : (row[4] || '')),
+                c3ViIdx !== -1 ? row[c3ViIdx] : (c3EnIdx !== -1 ? row[c3EnIdx] : (row[5] || '')),
+                c4ViIdx !== -1 ? row[c4ViIdx] : (c4EnIdx !== -1 ? row[c4EnIdx] : (row[6] || ''))
+            ].map(c => (c || '').trim()).filter(Boolean);
+        }
+
+        let ansEn = ansEnIdx !== -1 ? (row[ansEnIdx] || '').trim() : (row[7] || '').trim();
+        let ansVi = ansViIdx !== -1 ? (row[ansViIdx] || '').trim() : ansEn;
+
+        if (!isMultipleChoice && !ansEn) {
+            for (let c = 3; c < row.length; c++) {
+                if (row[c] && row[c].trim()) {
+                    ansEn = row[c].trim();
+                    ansVi = ansEn;
+                    break;
                 }
             }
         }
 
-        // Determine ignore_ai flag (for word-by-word passcode matching)
         let ignoreAi = false;
-        if (ignoreAiColIdx !== -1 && row[ignoreAiColIdx] !== undefined) {
-            const v = row[ignoreAiColIdx].trim().toLowerCase();
-            ignoreAi = (v === 'true' || v === '1' || v === 'yes' || v === 't');
-        } else if (row.length > 8 && row[8] !== undefined) {
-            const v = row[8].trim().toLowerCase();
+        if (ignoreAiIdx !== -1 && row[ignoreAiIdx] !== undefined) {
+            const v = row[ignoreAiIdx].trim().toLowerCase();
             ignoreAi = (v === 'true' || v === '1' || v === 'yes' || v === 't');
         }
 
-        // Safeguard for passcode questions (e.g. Caesar cipher)
-        if (!ignoreAi && (title.includes('uftbxogdqlzhchmg') || correctAnswer.toLowerCase() === 'vgucyphermaidinh')) {
-            ignoreAi = true;
-        }
+        const id = questionsEn.length + 1;
 
-        parsedQuestions.push({
-            id: parsedQuestions.length + 1,
-            title: title.trim(),
+        questionsEn.push({
+            id,
+            title: (rawTitleEn || rawTitleVi).trim(),
             image: image,
             type: isMultipleChoice ? 'multiple choice' : 'short_answer',
-            choices: choices,
-            correctAnswer: correctAnswer,
+            choices: choicesEn,
+            correctAnswer: ansEn || ansVi,
+            ignore_ai: Boolean(ignoreAi)
+        });
+
+        questionsVi.push({
+            id,
+            title: (rawTitleVi || rawTitleEn).trim(),
+            image: image,
+            type: isMultipleChoice ? 'multiple choice' : 'short_answer',
+            choices: choicesVi.length > 0 ? choicesVi : choicesEn,
+            correctAnswer: ansVi || ansEn,
             ignore_ai: Boolean(ignoreAi)
         });
     }
 
-    return parsedQuestions;
+    return { questionsEn, questionsVi };
+}
+
+function parseBilingualCSV(csvText) {
+    const rawRows = parseCSV(csvText);
+    return processBilingualRows(rawRows);
+}
+
+// Backward compatibility helper
+function processQuestionRows(rows) {
+    const res = processBilingualRows(rows);
+    return state.lang === 'VIE' ? res.questionsVi : res.questionsEn;
 }
 
 /* ==========================================================================
    Mistral AI Short Answer Grading Engine
    ========================================================================== */
-
-const DEFAULT_MISTRAL_API_KEY = '';
 
 function getMistralApiKey() {
     try {
@@ -663,7 +1006,6 @@ async function gradeShortAnswerWithMistral(questionTitle, studentAnswer, referen
         : `Question: ${questionTitle}\nReference Answer: ${referenceAnswer}\nStudent Answer: ${studentAnswer}`;
 
     async function callMistral(modelName) {
-        // 1. Try Vercel Serverless API first (secure backend env variables)
         try {
             const apiRes = await fetch('/api/grade', {
                 method: 'POST',
@@ -677,11 +1019,8 @@ async function gradeShortAnswerWithMistral(questionTitle, studentAnswer, referen
             if (apiRes.ok || (apiRes.status >= 400 && apiRes.status !== 404 && apiRes.status !== 405)) {
                 return apiRes;
             }
-        } catch (e) {
-            // /api/grade not reachable (e.g. running standalone local python http.server), fallback to direct API
-        }
+        } catch (e) {}
 
-        // 2. Direct client-side Mistral API call
         return fetch('https://api.mistral.ai/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -700,83 +1039,45 @@ async function gradeShortAnswerWithMistral(questionTitle, studentAnswer, referen
         });
     }
 
-    let rawText = '';
-    let usedModel = 'mistral-small-latest';
+    const modelsToTry = ['mistral-small-latest', 'ministral-8b-latest', 'open-mistral-7b'];
 
-    try {
-        // Attempt requested mistral-small-latest first
-        let response = await callMistral('mistral-small-latest');
+    for (const model of modelsToTry) {
+        try {
+            const res = await callMistral(model);
+            if (!res.ok) continue;
 
-        // If rate-limited (429) or model tier restricted, fall back seamlessly to ministral-8b-latest
-        if (!response.ok) {
-            console.warn(`[Mistral] Primary model returned status ${response.status}. Falling back to ministral-8b-latest...`);
-            usedModel = 'ministral-8b-latest';
-            response = await callMistral('ministral-8b-latest');
-        }
+            const data = await res.json();
+            const rawContent = data.choices?.[0]?.message?.content?.trim() || '';
+            const usedModel = data._modelUsed || model;
 
-        if (!response.ok) {
-            console.warn(`[Mistral] Fallback model returned status ${response.status}. Trying open-mistral-7b...`);
-            usedModel = 'open-mistral-7b';
-            response = await callMistral('open-mistral-7b');
-        }
-
-        if (response.ok) {
-            const data = await response.json();
-            if (data._modelUsed) usedModel = data._modelUsed;
-            if (data.choices && data.choices.length > 0 && data.choices[0].message) {
-                rawText = data.choices[0].message.content || '';
+            const pipeMatch = rawContent.match(/^(true|false)\s*\|\s*(\d+)%?\s*\|?\s*(.*)$/is);
+            if (pipeMatch) {
+                const isCorrect = pipeMatch[1].toLowerCase() === 'true';
+                const percentage = Math.min(100, Math.max(0, parseInt(pipeMatch[2], 10) || (isCorrect ? 100 : 0)));
+                const commentary = (pipeMatch[3] || '').trim();
+                return {
+                    isCorrect: isCorrect || percentage >= 75,
+                    percentage: percentage,
+                    commentary: commentary,
+                    model: usedModel
+                };
             }
-        }
-    } catch (err) {
-        console.error('[Mistral API Error]', err);
+
+            const lower = rawContent.toLowerCase();
+            const hasTrue = lower.includes('true');
+            const hasFalse = lower.includes('false');
+            const pctFind = rawContent.match(/(\d+)%/);
+            const percentage = pctFind ? parseInt(pctFind[1], 10) : (hasTrue ? 100 : 0);
+
+            return {
+                isCorrect: (hasTrue && !hasFalse) || percentage >= 75,
+                percentage: percentage,
+                commentary: rawContent.replace(/^(true|false)\s*\|?/i, '').trim(),
+                model: usedModel
+            };
+        } catch (err) {}
     }
 
-    // Parse the output with percentage extraction
-    if (rawText) {
-        const clean = rawText.replace(/```[\s\S]*?```/g, '').replace(/[\*\`]/g, '').trim();
-        const parts = clean.split('|').map(p => p.trim());
-
-        let isCorrect = false;
-        let percentage = null;
-        let commentary = '';
-
-        if (parts.length >= 3) {
-            const verdict = parts[0].toLowerCase();
-            isCorrect = verdict.includes('true') && !verdict.includes('false');
-            const numMatch = parts[1].match(/\d+/);
-            if (numMatch) percentage = parseInt(numMatch[0], 10);
-            commentary = parts.slice(2).join(' | ').trim();
-        } else if (parts.length === 2) {
-            const verdict = parts[0].toLowerCase();
-            isCorrect = verdict.includes('true') && !verdict.includes('false');
-            const numMatch = parts[1].match(/(\d+)%/);
-            if (numMatch) {
-                percentage = parseInt(numMatch[1], 10);
-                commentary = parts[1].replace(/^\d+%\s*:?\s*/, '').trim();
-            } else {
-                commentary = parts[1].trim();
-            }
-        } else {
-            isCorrect = clean.toLowerCase().includes('true') && !clean.toLowerCase().includes('false');
-            commentary = clean;
-        }
-
-        if (percentage === null) {
-            percentage = isCorrect ? 100 : 0;
-        }
-
-        percentage = Math.max(0, Math.min(100, percentage));
-
-        return {
-            isCorrect: isCorrect,
-            percentage: percentage,
-            commentary: commentary,
-            model: usedModel,
-            raw: rawText
-        };
-    }
-
-    // Offline / Network fallback to exact string matching
     const offlineMatch = studentAnswer.trim().toLowerCase() === (referenceAnswer || '').trim().toLowerCase();
     return {
         isCorrect: offlineMatch,
@@ -787,21 +1088,56 @@ async function gradeShortAnswerWithMistral(questionTitle, studentAnswer, referen
 }
 
 /* ==========================================================================
-   Question System & Display
+   Question System, Display & Background Session Scoring
    ========================================================================== */
 
 function loadQuestionsFromCSVText(csvText) {
-    const rawRows = parseCSV(csvText);
-    const questions = processQuestionRows(rawRows);
+    const parsed = parseBilingualCSV(csvText);
+    if (!parsed || parsed.questionsEn.length === 0) return false;
 
-    if (questions.length === 0) return false;
-
-    state.questions = questions;
-    state.unvisitedPool = questions.map((_, idx) => idx);
+    state.questionsEn = parsed.questionsEn;
+    state.questionsVi = parsed.questionsVi;
+    state.questions = state.lang === 'VIE' ? state.questionsVi : state.questionsEn;
+    state.unvisitedPool = state.questions.map((_, idx) => idx);
     state.currentIndex = -1;
 
+    resetSessionState();
     randomizeQuestion();
     return true;
+}
+
+function resetSessionState() {
+    state.session.answeredCount = 0;
+    state.session.correctCount = 0;
+    state.session.wrongCount = 0;
+    state.session.history = [];
+    state.session.isGameOver = false;
+
+    if (elements.gameOverModal) {
+        elements.gameOverModal.classList.add('hidden');
+    }
+
+    updateNextButtonText();
+}
+
+function resetSessionAndRestart() {
+    resetSessionState();
+    state.unvisitedPool = state.questions.map((_, idx) => idx);
+    randomizeQuestion();
+}
+
+function recordAnswerInSession(answerData) {
+    if (state.session.isGameOver) return;
+
+    state.session.history.push(answerData);
+    if (answerData.isCorrect) {
+        state.session.correctCount++;
+    } else {
+        state.session.wrongCount++;
+    }
+    state.session.answeredCount = state.session.history.length;
+
+    updateNextButtonText();
 }
 
 function randomizeQuestion() {
@@ -856,6 +1192,8 @@ function displayQuestion(index) {
     if (elements.nextActionWrap) {
         elements.nextActionWrap.classList.add('hidden');
     }
+
+    updateNextButtonText();
 
     // Render Choices or Input
     renderInteractiveArea(q);
@@ -955,7 +1293,6 @@ function renderInteractiveArea(q) {
             if (state.currentAnswerState) {
                 state.currentAnswerState.userText = input.value;
             }
-            // If answer matches directly while typing, show the result immediately!
             if (!state.hasAnsweredCurrent && checkDirectAnswerMatch(input.value, q)) {
                 checkAnswer();
             }
@@ -971,7 +1308,7 @@ function renderInteractiveArea(q) {
         form.appendChild(inputRow);
 
         const checkAnswer = async () => {
-            if (state.hasAnsweredCurrent) return; // Only submit ONCE
+            if (state.hasAnsweredCurrent) return;
             const val = input.value.trim();
             if (!val) return;
 
@@ -981,7 +1318,6 @@ function renderInteractiveArea(q) {
 
             let gradeResult;
 
-            // 1. Direct match: show result IMMEDIATELY without calling AI or waiting for spinner!
             if (checkDirectAnswerMatch(val, q)) {
                 gradeResult = {
                     isCorrect: true,
@@ -990,7 +1326,6 @@ function renderInteractiveArea(q) {
                     model: 'direct-match'
                 };
             } else if (q.ignore_ai) {
-                // Passcode question that failed exact match
                 gradeResult = {
                     isCorrect: false,
                     percentage: 0,
@@ -1000,7 +1335,6 @@ function renderInteractiveArea(q) {
                     model: 'passcode-exact'
                 };
             } else {
-                // Show clean evaluating indicator and evaluate with Mistral
                 const evalNotice = document.createElement('div');
                 evalNotice.className = 'sa-evaluating-notice';
                 evalNotice.innerHTML = `
@@ -1024,6 +1358,19 @@ function renderInteractiveArea(q) {
                 ignore_ai: Boolean(q.ignore_ai)
             };
 
+            // Background score recording
+            recordAnswerInSession({
+                questionIdx: state.currentIndex,
+                questionEn: state.questionsEn[state.currentIndex],
+                questionVi: state.questionsVi[state.currentIndex],
+                title: q.title,
+                userAnswer: val,
+                correctAnswer: q.correctAnswer,
+                isCorrect: gradeResult.isCorrect,
+                percentage: gradeResult.percentage,
+                type: 'short_answer'
+            });
+
             form.innerHTML = '';
             const resultDisplay = document.createElement('div');
             resultDisplay.className = `sa-result-display ${gradeResult.isCorrect ? 'is-correct' : 'is-incorrect'}`;
@@ -1035,7 +1382,6 @@ function renderInteractiveArea(q) {
             `;
 
             if (gradeResult.isCorrect) {
-                // Correct: Put green tick next to answer and match percentage
                 const feedbackHtml = gradeResult.commentary ? `
                     <div class="sa-ai-commentary-box">
                         <div class="sa-ai-header">
@@ -1054,7 +1400,6 @@ function renderInteractiveArea(q) {
                     ${feedbackHtml}
                 `;
             } else {
-                // Incorrect: Strike through answer in red, show red cross, match percentage, correct answer and commentary
                 const commentaryTitle = state.lang === 'VIE' ? 'Tại sao bạn sai' : 'Why you are wrong';
                 const commentaryHtml = gradeResult.commentary ? `
                     <div class="sa-ai-commentary-box">
@@ -1120,6 +1465,19 @@ function handleChoiceClick(choiceIdx, choiceText, q) {
         model: ''
     };
 
+    // Background score recording
+    recordAnswerInSession({
+        questionIdx: state.currentIndex,
+        questionEn: state.questionsEn[state.currentIndex],
+        questionVi: state.questionsVi[state.currentIndex],
+        title: q.title,
+        userAnswer: choiceText,
+        correctAnswer: q.correctAnswer,
+        isCorrect: isMatch,
+        percentage: isMatch ? 100 : 0,
+        type: 'multiple choice'
+    });
+
     const selectedItem = items[choiceIdx];
     const selectedSlot = selectedItem ? selectedItem.querySelector('.choice-icon-slot') : null;
 
@@ -1130,7 +1488,6 @@ function handleChoiceClick(choiceIdx, choiceText, q) {
         if (selectedItem) selectedItem.classList.add('is-incorrect');
         if (selectedSlot) selectedSlot.innerHTML = `<span class="choice-result-icon">${getAnimatedCrossSvg(24)}</span>`;
 
-        // Highlight and put green tick on the actual correct choice
         items.forEach((item, idx) => {
             const itemText = item.dataset.choice;
             if (itemText.trim().toLowerCase() === (q.correctAnswer || '').trim().toLowerCase()
@@ -1150,6 +1507,93 @@ function triggerAnsweredState() {
     if (elements.nextActionWrap) {
         elements.nextActionWrap.classList.remove('hidden');
     }
+    updateNextButtonText();
+}
+
+/* ==========================================================================
+   Game Over Screen & Statistics Presentation
+   ========================================================================== */
+
+function showGameOverScreen() {
+    state.session.isGameOver = true;
+
+    if (elements.finalScoreNum) elements.finalScoreNum.textContent = state.session.correctCount;
+    if (elements.finalScoreTotal) elements.finalScoreTotal.textContent = state.session.targetCount;
+    if (elements.statAnswered) elements.statAnswered.textContent = state.session.answeredCount;
+    if (elements.statCorrect) elements.statCorrect.textContent = state.session.correctCount;
+    if (elements.statWrong) elements.statWrong.textContent = state.session.wrongCount;
+
+    updateGameOverLanguage();
+
+    if (elements.gameOverModal) {
+        elements.gameOverModal.classList.remove('hidden');
+    }
+}
+
+function updateGameOverLanguage() {
+    if (!elements.gameOverModal) return;
+
+    const isVi = state.lang === 'VIE';
+    if (elements.gameOverBadge) elements.gameOverBadge.textContent = isVi ? 'KẾT QUẢ ĐÁNH GIÁ' : 'ASSESSMENT COMPLETE';
+    if (elements.gameOverTitle) elements.gameOverTitle.textContent = isVi ? 'Hoàn Thành Lượt Thi' : 'Session Complete';
+    if (elements.gameOverSubtitle) elements.gameOverSubtitle.textContent = isVi
+        ? 'Bạn đã hoàn thành 5 câu hỏi. Dưới đây là bảng thống kê kết quả:'
+        : 'You have answered 5 questions. Here are your final results:';
+
+    const pct = Math.round((state.session.correctCount / state.session.targetCount) * 100);
+    if (elements.finalScorePct) {
+        elements.finalScorePct.textContent = `${pct}% ${isVi ? 'ĐỘ CHÍNH XÁC' : 'ACCURACY'}`;
+    }
+
+    if (elements.statAnsweredLbl) elements.statAnsweredLbl.textContent = isVi ? 'Câu hỏi' : 'Questions';
+    if (elements.statCorrectLbl) elements.statCorrectLbl.textContent = isVi ? 'Chính xác' : 'Correct';
+    if (elements.statWrongLbl) elements.statWrongLbl.textContent = isVi ? 'Chưa đúng' : 'Wrong';
+    if (elements.breakdownTitle) elements.breakdownTitle.textContent = isVi ? 'Chi Tiết 5 Câu Đã Làm' : 'Round Questions Breakdown';
+    if (elements.restartBtnText) elements.restartBtnText.textContent = isVi ? 'Mở Khóa Để Làm Lại' : 'Unlock to Restart';
+
+    renderRoundBreakdown();
+}
+
+function renderRoundBreakdown() {
+    if (!elements.roundBreakdownList) return;
+    elements.roundBreakdownList.innerHTML = '';
+
+    const isVi = state.lang === 'VIE';
+
+    state.session.history.forEach((item, idx) => {
+        const entry = document.createElement('div');
+        entry.className = 'breakdown-item';
+
+        const qObj = isVi ? item.questionVi : item.questionEn;
+        const qTitle = qObj?.title || item.title || `Question ${idx + 1}`;
+        const refAnswer = qObj?.correctAnswer || item.correctAnswer || '';
+
+        const statusTag = item.isCorrect
+            ? `<span class="breakdown-status-tag is-correct">✓ ${isVi ? 'ĐÚNG' : 'CORRECT'}</span>`
+            : `<span class="breakdown-status-tag is-wrong">✕ ${isVi ? 'SAI' : 'WRONG'}</span>`;
+
+        let detailsHtml = '';
+        if (item.isCorrect) {
+            detailsHtml = `<div class="breakdown-details"><span>${isVi ? 'Đã chọn/nhập:' : 'Your answer:'} ${escapeHtml(item.userAnswer)}</span></div>`;
+        } else {
+            detailsHtml = `
+                <div class="breakdown-details">
+                    <span>${isVi ? 'Đã chọn/nhập:' : 'Your answer:'} <del>${escapeHtml(item.userAnswer)}</del></span>
+                    <span>• ${isVi ? 'Đáp án đúng:' : 'Correct:'} <strong>${escapeHtml(refAnswer)}</strong></span>
+                </div>
+            `;
+        }
+
+        entry.innerHTML = `
+            <div class="breakdown-item-top">
+                <span class="breakdown-q-title"><strong>#${idx + 1}.</strong> ${escapeHtml(qTitle)}</span>
+                ${statusTag}
+            </div>
+            ${detailsHtml}
+        `;
+
+        elements.roundBreakdownList.appendChild(entry);
+    });
 }
 
 /* ==========================================================================
@@ -1260,21 +1704,30 @@ function escapeHtml(str) {
    ========================================================================== */
 
 function initEvents() {
-    on(elements.randomizeBtn, 'click', () => {
-        if (!state.isLocked) randomizeQuestion();
+    on(elements.randomizeBtn, () => {
+        if (state.isLocked) return;
+        if (state.hasAnsweredCurrent && state.session.answeredCount >= state.session.targetCount) {
+            showGameOverScreen();
+        } else {
+            randomizeQuestion();
+        }
     });
 
-    on(elements.searchBtn, 'click', () => {
+    on(elements.searchBtn, () => {
         if (!state.isLocked) openSearchModal();
     });
 
-    on(elements.csvManagerBtn, 'click', () => {
+    on(elements.csvManagerBtn, () => {
         if (!state.isLocked) openCsvModal();
     });
 
     // NEXT -> Action Click
     on(elements.nextQuestionBtn, 'click', () => {
-        randomizeQuestion();
+        if (state.session.answeredCount >= state.session.targetCount) {
+            showGameOverScreen();
+        } else {
+            randomizeQuestion();
+        }
     });
 
     // Search dialog
@@ -1317,8 +1770,7 @@ function initEvents() {
     });
 
     on(elements.loadSampleCsvBtn, 'click', () => {
-        const sampleData = state.lang === 'VIE' ? CSV_DATA_VI : CSV_DATA_EN;
-        loadQuestionsFromCSVText(sampleData);
+        loadQuestionsFromCSVText(MAIN_QUESTIONS_CSV);
         closeCsvModal();
     });
 
@@ -1333,7 +1785,7 @@ function initEvents() {
         if (e.target === elements.imageLightbox) closeLightbox();
     });
 
-    // Modal backdrop click-to-close
+    // Modal backdrop click-to-close (do NOT close gameOverModal on backdrop click to enforce unlock!)
     on(elements.searchModal, 'click', (e) => {
         if (e.target === elements.searchModal) closeSearchModal();
     });

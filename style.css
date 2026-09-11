@@ -931,6 +931,243 @@ body {
     margin-bottom: 14px;
 }
 
+/* ==========================================================================
+   Game Over Modal & Statistics
+   ========================================================================== */
+
+.game-over-box {
+    padding: 30px 28px;
+    gap: 18px;
+    max-width: 620px;
+    width: 92%;
+    border: 2px solid var(--border-color);
+    background-color: var(--modal-bg);
+    animation: modalPop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.game-over-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-over-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-primary);
+    background-color: var(--bg-subtle);
+}
+
+.game-over-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.game-over-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    max-width: 480px;
+}
+
+.score-display-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    background-color: var(--bg-subtle);
+    border: 2px solid var(--border-color);
+    gap: 10px;
+}
+
+.score-number-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.score-current {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-primary);
+}
+
+.score-slash {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.score-total {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.score-pct-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background-color: var(--btn-solid-bg);
+    color: var(--btn-solid-text);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 8px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-main);
+    gap: 4px;
+}
+
+.stat-card-val {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-primary);
+}
+
+.stat-card-lbl {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.breakdown-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breakdown-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+}
+
+.breakdown-list {
+    max-height: 180px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-main);
+    display: flex;
+    flex-direction: column;
+}
+
+.breakdown-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-item-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.breakdown-q-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+    line-height: 1.3;
+}
+
+.breakdown-status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.breakdown-status-tag.is-correct {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+}
+
+.breakdown-status-tag.is-wrong {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+}
+
+.breakdown-details {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.game-over-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.restart-btn {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+}
+
 /* Helpers */
 .hidden {
     display: none !important;

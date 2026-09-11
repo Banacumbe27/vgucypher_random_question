@@ -1,0 +1,237 @@
+question_title_en,question_title_vi,image,type,choice_1_en,choice_1_vi,choice_2_en,choice_2_vi,choice_3_en,choice_3_vi,choice_4_en,choice_4_vi,correct_answer_en,correct_answer_vi,ignore_ai
+Which component primarily executes a computer's program instructions?,Thành phần nào chủ yếu thực thi các lệnh của chương trình máy tính?,,multiple choice,PSU,PSU,RAM,RAM,SSD,SSD,CPU,CPU,CPU,CPU,
+What is the main role of RAM during normal computer use?,Vai trò chính của RAM trong quá trình sử dụng máy tính thông thường là gì?,,multiple choice,Hold active program data,Lưu dữ liệu của chương trình đang hoạt động,Store files without power,Lưu tệp khi không có điện,Execute arithmetic program instructions,Thực hiện các lệnh tính toán số học của chương trình,Supply electrical operating power,Cung cấp điện năng cho máy hoạt động,Hold active program data,Lưu dữ liệu của chương trình đang hoạt động,
+How many bits make up one byte?,Một byte gồm bao nhiêu bit?,,multiple choice,16 bits,16 bit,8 bits,8 bit,4 bits,4 bit,32 bits,32 bit,8 bits,8 bit,
+What is DNS mainly used for when opening a website?,"Khi mở một trang web, DNS chủ yếu được dùng để làm gì?",,multiple choice,Assigning a device's IP address,Gán địa chỉ IP cho thiết bị,Storing a browser's saved pages,Lưu các trang đã được trình duyệt lưu lại,Finding a domain's IP address,Tìm địa chỉ IP của tên miền,Encrypting a browser's web traffic,Mã hóa lưu lượng web của trình duyệt,Finding a domain's IP address,Tìm địa chỉ IP của tên miền,
+Which item is an operating system?,Mục nào sau đây là một hệ điều hành?,,multiple choice,Windows,Windows,Python,Python,Chrome,Chrome,Word,Word,Windows,Windows,
+Which storage device has no moving mechanical parts?,Thiết bị lưu trữ nào không có bộ phận cơ học chuyển động?,,multiple choice,HDD,HDD,DVD drive,Ổ đĩa DVD,Tape drive,Ổ băng từ,SSD,SSD,SSD,SSD,
+Which pair lists all digits used in the binary number system?,Cặp nào liệt kê đầy đủ các chữ số được dùng trong hệ nhị phân?,,multiple choice,1 and 9,1 và 9,0 and 1,0 và 1,1 and 2,1 và 2,0 and 9,0 và 9,0 and 1,0 và 1,
+What is the type of the literal 12 in Python 3?,Giá trị 12 thuộc kiểu dữ liệu nào trong Python 3?,,multiple choice,int,int,float,float,str,str,bool,bool,int,int,
+Which symbol starts a comment in Python 3?,Ký hiệu nào bắt đầu một chú thích trong Python 3?,,multiple choice,--,--,//,//,#,#,/*,/*,#,#,
+Which Python 3 literal is a string?,Giá trị nào sau đây là một chuỗi trong Python 3?,,multiple choice,25,25,2.5,2.5,True,True,"""25""","""25""","""25""","""25""",
+What is binary 0110 in decimal?,Số nhị phân 0110 có giá trị bằng bao nhiêu trong hệ thập phân?,,multiple choice,8,8,6,6,4,4,12,12,6,6,
+"You save a file to an SSD, then shut down normally. Where does the saved file remain?",Bạn lưu một tệp vào SSD rồi tắt máy đúng cách. Tệp đã lưu vẫn nằm ở đâu?,,multiple choice,ROM,ROM,CPU,CPU,RAM,RAM,SSD,SSD,SSD,SSD,
+A browser asks a web server for a page. Which role does the browser play?,Một trình duyệt yêu cầu máy chủ web cung cấp một trang. Trình duyệt đóng vai trò gì?,,multiple choice,Server,Máy chủ (Server),Router,Bộ định tuyến (Router),Client,Máy khách (Client),Switch,Bộ chuyển mạch (Switch),Client,Máy khách (Client),
+Which is a valid IPv4 address in dotted-decimal form?,Địa chỉ nào là địa chỉ IPv4 hợp lệ ở dạng thập phân phân tách bằng dấu chấm?,,multiple choice,192.168.1,192.168.1,192.168.1.5,192.168.1.5,192.168.1.5.2,192.168.1.5.2,192.168.1.300,192.168.1.300,192.168.1.5,192.168.1.5,
+"What does this Python 3 code print?
+
+x = 4
+x = x + 3
+print(x)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+x = 4
+x = x + 3
+print(x)",,multiple choice,4,4,43,43,7,7,3,3,7,7,
+"What does this Python 3 code print?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+def calculate(a, b):
+    return a + b * 2
+
+print(calculate(3, 4))",,multiple choice,7,7,14,14,10,10,11,11,11,11,
+"What does this Python 3 code print?
+
+print(not True, True or False)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(not True, True or False)",,multiple choice,True True,True True,True False,True False,False True,False True,False False,False False,False True,False True,
+"What does this Python 3 code print?
+
+print(7 // 2)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(7 // 2)",,multiple choice,1,1,3,3,3.5,3.5,4,4,3,3,
+"What does this Python 3 code print?
+
+numbers = [10, 20, 30]
+print(numbers[1])","Đoạn mã Python 3 sau in ra kết quả gì?
+
+numbers = [10, 20, 30]
+print(numbers[1])",,multiple choice,20,20,1,1,10,10,30,30,20,20,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 4):
+    total += n
+print(total)",,multiple choice,6,6,10,10,3,3,4,4,6,6,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a
+b[0] = 9
+print(a)",,multiple choice,"[1, 2]","[1, 2]","[9, 9]","[9, 9]","[9, 2]","[9, 2]","[1, 9]","[1, 9]","[9, 2]","[9, 2]",
+"What does this Python 3 code print?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+word = ""cat""
+other = word
+word = word + ""s""
+print(other)",,multiple choice,cat,cat,catcats,catcats,s,s,cats,cats,cat,cat,
+"What does this Python 3 code print?
+
+print(-7 // 2)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(-7 // 2)",,multiple choice,3,3,-4,-4,-3.5,-3.5,-3,-3,-4,-4,
+"What does this Python 3 code print?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+def add(a, b):
+    total = a + b
+
+print(add(2, 3))",,multiple choice,TypeError,TypeError,None,None,5,5,0,0,None,None,
+"What does this Python 3 code print?
+
+print(5 == ""5"", 5 == 5.0)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(5 == ""5"", 5 == 5.0)",,multiple choice,True False,True False,True True,True True,False False,False False,False True,False True,False True,False True,
+What is the minimum number of bits needed to represent every integer from 0 through 300 in unsigned binary?,Cần tối thiểu bao nhiêu bit để biểu diễn mọi số nguyên từ 0 đến 300 trong hệ nhị phân không dấu?,,multiple choice,8 bits,8 bit,9 bits,9 bit,16 bits,16 bit,10 bits,10 bit,9 bits,9 bit,
+"Using exactly 4 bits, what remains after adding 1 to binary 1111 and discarding the extra carry bit?","Khi chỉ dùng đúng 4 bit, kết quả còn lại là gì sau khi cộng 1 vào số nhị phân 1111 và bỏ bit nhớ vượt quá 4 bit?",,multiple choice,0000,0000,1110,1110,0001,0001,1111,1111,0000,0000,
+"What does this Python 3 code print?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+count = 0
+for n in range(1, 5):
+    if n % 2 == 0:
+        count += 1
+print(count)",,multiple choice,3,3,6,6,2,2,4,4,2,2,
+A page uses HTTPS. Which conclusion is justified by HTTPS alone?,Một trang web sử dụng HTTPS. Chỉ riêng việc sử dụng HTTPS cho phép kết luận điều nào sau đây?,,multiple choice,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,The website's downloads are harmless,Các tệp tải xuống từ trang web đều vô hại,The website's owner is trustworthy,Chủ sở hữu trang web đáng tin cậy,The website's information is accurate,Thông tin trên trang web là chính xác,The connection's traffic is encrypted,Lưu lượng của kết nối được mã hóa,
+"At 80 Mb/s, how many seconds are needed to transfer 40 MB? Use decimal units and ignore overhead.","Ở tốc độ 80 Mb/s, cần bao nhiêu giây để truyền 40 MB dữ liệu? Dùng đơn vị thập phân và bỏ qua phần dữ liệu phụ trợ (overhead).",,multiple choice,8 seconds,8 giây,0.5 seconds,0.5 giây,40 seconds,40 giây,4 seconds,4 giây,4 seconds,4 giây,
+What does RAM stand for?,RAM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Random Access Memory,Random Access Memory,
+What does ROM stand for?,ROM là viết tắt của cụm từ nào?,,short_answer,,,,,,,,,Read-Only Memory,Read-Only Memory,
+"How many keys does a traditional full-size US ANSI Windows keyboard have, excluding extra media or macro keys?","Một bàn phím Windows đầy đủ truyền thống theo bố cục US ANSI có bao nhiêu phím, không tính các phím đa phương tiện hoặc macro bổ sung?",,short_answer,,,,,,,,,104,104,
+Is HTML a programming language? Name its language category.,HTML có phải là ngôn ngữ lập trình không? Hãy nêu loại ngôn ngữ của HTML.,,short_answer,,,,,,,,,No. It is a markup language.,Không. HTML là ngôn ngữ đánh dấu.,
+What type of language is CSS?,CSS thuộc loại ngôn ngữ nào?,,short_answer,,,,,,,,,Style sheet language.,Ngôn ngữ định kiểu.,
+Name four programming languages.,Hãy kể tên bốn ngôn ngữ lập trình.,,short_answer,,,,,,,,,"Python, Java, C, JavaScript.","Python, Java, C, JavaScript.",
+Name the two broad programming-language levels used in introductory classifications.,Hãy nêu hai cấp độ chính của ngôn ngữ lập trình trong cách phân loại nhập môn.,,short_answer,,,,,,,,,High-level and low-level.,Bậc cao và bậc thấp.,
+What does IP stand for in computer networking?,"Trong mạng máy tính, IP là viết tắt của cụm từ nào?",,short_answer,,,,,,,,,Internet Protocol,Internet Protocol,
+Which Python 3 built-in function displays text in the console?,Hàm tích hợp sẵn nào trong Python 3 dùng để hiển thị văn bản trên cửa sổ dòng lệnh?,,short_answer,,,,,,,,,print(),print(),
+What is the name of the Python 3 built-in type with values True and False?,Kiểu dữ liệu tích hợp sẵn nào trong Python 3 có hai giá trị True và False?,,short_answer,,,,,,,,,bool,bool,
+"What does this Python 3 code print?
+
+print(int(""12"") + 3)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(int(""12"") + 3)",,short_answer,,,,,,,,,15,15,
+"What does this Python 3 code print?
+
+print(""go"" * 3)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(""go"" * 3)",,short_answer,,,,,,,,,gogogo,gogogo,
+"What does this Python 3 code print?
+
+print(len(""Hi all""))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(len(""Hi all""))",,short_answer,,,,,,,,,6,6,
+"What does this Python 3 code print?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")","Đoạn mã Python 3 sau in ra kết quả gì?
+
+score = 7
+if score >= 5:
+    print(""Pass"")
+else:
+    print(""Retry"")",,short_answer,,,,,,,,,Pass,Pass,
+"In one short sentence, how does compilation differ from interpretation?","Trong một câu ngắn, hãy nêu điểm khác nhau giữa biên dịch và thông dịch.",,short_answer,,,,,,,,,Compilation produces translated code; interpretation executes source or intermediate code.,Biên dịch tạo ra mã đã được dịch; thông dịch thực thi mã nguồn hoặc mã trung gian.,
+"Which type does input() return in Python 3, even when the user types digits?","Trong Python 3, input() trả về kiểu dữ liệu nào, ngay cả khi người dùng nhập các chữ số?",,short_answer,,,,,,,,,str,str,
+Convert decimal 13 to binary.,Đổi số thập phân 13 sang hệ nhị phân.,,short_answer,,,,,,,,,1101,1101,
+"What does this Python 3 code print?
+
+print(17 % 5)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(17 % 5)",,short_answer,,,,,,,,,2,2,
+A server sends a requested web page back to a browser. Is that message a request or a response?,Máy chủ gửi lại cho trình duyệt một trang web đã được yêu cầu. Thông điệp đó là yêu cầu (request) hay phản hồi (response)?,,short_answer,,,,,,,,,Response,Phản hồi (Response),
+"What does this Python 3 code print?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+n = 0
+while n < 3:
+    n += 1
+print(n)",,short_answer,,,,,,,,,3,3,
+"In Python 3, why is 0.1 + 0.2 == 0.3 False? Use one short sentence.","Trong Python 3, tại sao biểu thức 0.1 + 0.2 == 0.3 cho kết quả False? Trả lời bằng một câu ngắn.",,short_answer,,,,,,,,,Binary floating-point rounding makes these computed values slightly different.,Sai số làm tròn của số dấu phẩy động nhị phân khiến các giá trị tính được chênh lệch một chút.,
+"What does this Python 3 code print?
+
+print(bool(""False""))","Đoạn mã Python 3 sau in ra kết quả gì?
+
+print(bool(""False""))",,short_answer,,,,,,,,,True,True,
+"Which exception does this Python 3 code raise?
+
+print(""5"" + 2)","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+print(""5"" + 2)",,short_answer,,,,,,,,,TypeError,TypeError,
+"Which exception does this Python 3 code raise?
+
+values = [1, 2]
+print(values[2])","Đoạn mã Python 3 sau gây ra ngoại lệ nào?
+
+values = [1, 2]
+print(values[2])",,short_answer,,,,,,,,,IndexError,IndexError,
+"What does this Python 3 code print?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+a = [1, 2]
+b = a.copy()
+b.append(3)
+print(a)",,short_answer,,,,,,,,,"[1, 2]","[1, 2]",
+"In Python 3, why does word[0] = ""C"" fail when word = ""cat""?","Trong Python 3, tại sao phép gán word[0] = ""C"" thất bại khi word = ""cat""?",,short_answer,,,,,,,,,Strings are immutable.,Chuỗi là bất biến.,
+"What does this Python 3 code print?
+
+values = [1, 2]
+result = values.append(3)
+print(result)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+values = [1, 2]
+result = values.append(3)
+print(result)",,short_answer,,,,,,,,,None,None,
+"What does this Python 3 code print?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)","Đoạn mã Python 3 sau in ra kết quả gì?
+
+total = 0
+for n in range(1, 6):
+    if n == 4:
+        break
+    total += n
+print(total)",,short_answer,,,,,,,,,6,6,
+"A DNS lookup fails, but a connection test to a known Internet IP address succeeds. Does this prove all Internet connectivity is lost? Briefly explain.",Tra cứu DNS thất bại nhưng kiểm tra kết nối đến một địa chỉ IP Internet đã biết lại thành công. Điều này có chứng minh rằng mọi kết nối Internet đều đã mất không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,No. IP connectivity works; name resolution may be failing.,Không. Kết nối IP vẫn hoạt động; việc phân giải tên miền có thể đang gặp lỗi.,
+Can a language implementation both compile and interpret the same program? Briefly explain.,Một cách triển khai ngôn ngữ có thể vừa biên dịch vừa thông dịch cùng một chương trình không? Giải thích ngắn gọn.,,short_answer,,,,,,,,,"Yes. It can compile to bytecode, then interpret that bytecode.","Có. Chương trình có thể được biên dịch thành bytecode, sau đó bytecode được thông dịch.",
