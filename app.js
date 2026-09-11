@@ -349,7 +349,17 @@ const state = {
         correctCount: 0,
         wrongCount: 0,
         history: [], // { questionIdx, questionEn, questionVi, title, userAnswer, correctAnswer, isCorrect, percentage, type }
-        isGameOver: false
+        isGameOver: false,
+        endReason: 'completed' // 'completed' or 'timeout'
+    },
+    timer: {
+        durationSeconds: 480, // 8:00 (8 minutes)
+        remainingSeconds: 480,
+        intervalId: null,
+        isRunning: false,
+        hasStarted: false,
+        isExpired: false,
+        endTime: null
     },
     hasAnsweredCurrent: false,
     currentAnswerState: {
@@ -376,6 +386,12 @@ function getElements() {
         csvManagerBtn: document.getElementById('csvManagerBtn'),
         lockToggleBtn: document.getElementById('lockToggleBtn'),
         lockIcon: document.getElementById('lockIcon'),
+
+        // Session 8:00 Countdown Timer
+        sessionTimerWrap: document.getElementById('sessionTimerWrap'),
+        sessionTimerDigits: document.getElementById('sessionTimerDigits'),
+        sessionTimerBadge: document.getElementById('sessionTimerBadge'),
+        gameOverTimePill: document.getElementById('gameOverTimePill'),
 
         // Hint Topbar Checkbox
         hintToggleWrap: document.getElementById('hintToggleWrap'),
@@ -561,6 +577,9 @@ function applyLanguage(lang, isInitial = false) {
     if (elements.hintToggleText) {
         elements.hintToggleText.textContent = lang === 'VIE' ? 'Gợi ý' : 'Hints';
     }
+
+    // Update session timer UI for current language
+    updateTimerUI();
 }
 
 function updateNextButtonText() {
@@ -1215,6 +1234,9 @@ function resetSessionState() {
     state.session.wrongCount = 0;
     state.session.history = [];
     state.session.isGameOver = false;
+    state.session.endReason = 'completed';
+
+    resetSessionTimer();
 
     if (elements.gameOverModal) {
         elements.gameOverModal.classList.add('hidden');
@@ -1240,7 +1262,103 @@ function recordAnswerInSession(answerData) {
     }
     state.session.answeredCount = state.session.history.length;
 
+    // Start 8:00 countdown timer after the first question is answered
+    if (!state.timer.hasStarted) {
+        startSessionTimer();
+    }
+
     updateNextButtonText();
+}
+
+/* ==========================================================================
+   Session Countdown Timer (8:00 Time Limit)
+   ========================================================================== */
+
+function startSessionTimer() {
+    if (state.timer.isRunning) return;
+
+    state.timer.isRunning = true;
+    state.timer.hasStarted = true;
+    state.timer.isExpired = false;
+    state.timer.endTime = Date.now() + (state.timer.remainingSeconds * 1000);
+
+    updateTimerUI();
+
+    if (state.timer.intervalId) clearInterval(state.timer.intervalId);
+
+    state.timer.intervalId = setInterval(() => {
+        const remaining = Math.max(0, Math.ceil((state.timer.endTime - Date.now()) / 1000));
+        state.timer.remainingSeconds = remaining;
+        updateTimerUI();
+
+        if (remaining <= 0) {
+            handleTimerExpired();
+        }
+    }, 250);
+}
+
+function stopSessionTimer() {
+    if (state.timer.intervalId) {
+        clearInterval(state.timer.intervalId);
+        state.timer.intervalId = null;
+    }
+    state.timer.isRunning = false;
+}
+
+function resetSessionTimer() {
+    stopSessionTimer();
+    state.timer.durationSeconds = 480;
+    state.timer.remainingSeconds = 480;
+    state.timer.hasStarted = false;
+    state.timer.isRunning = false;
+    state.timer.isExpired = false;
+    state.timer.endTime = null;
+    updateTimerUI();
+}
+
+function handleTimerExpired() {
+    stopSessionTimer();
+    state.timer.isExpired = true;
+    state.timer.remainingSeconds = 0;
+    state.session.endReason = 'timeout';
+    updateTimerUI();
+
+    // Dismiss any active auxiliary modals so the results are clearly shown
+    closeSearchModal();
+    closeCsvModal();
+    closeLightbox();
+    closeLockModal();
+
+    showGameOverScreen();
+}
+
+function updateTimerUI() {
+    if (!elements.sessionTimerDigits) return;
+
+    const totalSec = Math.max(0, state.timer.remainingSeconds);
+    const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
+    const ss = String(totalSec % 60).padStart(2, '0');
+    elements.sessionTimerDigits.textContent = `${mm}:${ss}`;
+
+    const isVi = state.lang === 'VIE';
+
+    if (elements.sessionTimerWrap) {
+        elements.sessionTimerWrap.classList.toggle('is-running', state.timer.isRunning);
+        elements.sessionTimerWrap.classList.toggle('is-warning', state.timer.isRunning && totalSec <= 60 && totalSec > 0);
+        elements.sessionTimerWrap.classList.toggle('is-expired', state.timer.isExpired || (totalSec === 0 && state.timer.hasStarted));
+    }
+
+    if (elements.sessionTimerBadge) {
+        if (state.timer.isExpired || (totalSec === 0 && state.timer.hasStarted)) {
+            elements.sessionTimerBadge.textContent = isVi ? 'HẾT GIỜ' : "TIME'S UP";
+        } else if (state.timer.isRunning && totalSec <= 60) {
+            elements.sessionTimerBadge.textContent = isVi ? 'SẮP HẾT' : 'FINAL 1M';
+        } else if (state.timer.isRunning) {
+            elements.sessionTimerBadge.textContent = isVi ? 'ĐANG CHẠY' : 'LIVE';
+        } else {
+            elements.sessionTimerBadge.textContent = isVi ? 'SẴN SÀNG' : 'READY';
+        }
+    }
 }
 
 function randomizeQuestion() {
@@ -1817,6 +1935,7 @@ function triggerAnsweredState() {
 
 function showGameOverScreen() {
     state.session.isGameOver = true;
+    stopSessionTimer();
 
     if (elements.finalScoreNum) elements.finalScoreNum.textContent = state.session.correctCount;
     if (elements.finalScoreTotal) elements.finalScoreTotal.textContent = state.session.targetCount;
@@ -1835,21 +1954,60 @@ function updateGameOverLanguage() {
     if (!elements.gameOverModal) return;
 
     const isVi = state.lang === 'VIE';
-    if (elements.gameOverBadge) elements.gameOverBadge.textContent = isVi ? 'KẾT QUẢ ĐÁNH GIÁ' : 'ASSESSMENT COMPLETE';
-    if (elements.gameOverTitle) elements.gameOverTitle.textContent = isVi ? 'Hoàn Thành Lượt Thi' : 'Session Complete';
-    if (elements.gameOverSubtitle) elements.gameOverSubtitle.textContent = isVi
-        ? 'Bạn đã hoàn thành 5 câu hỏi. Dưới đây là bảng thống kê kết quả:'
-        : 'You have answered 5 questions. Here are your final results:';
+    const isTimeout = state.session.endReason === 'timeout' || state.timer.isExpired;
 
-    const pct = Math.round((state.session.correctCount / state.session.targetCount) * 100);
+    if (elements.gameOverBadge) {
+        elements.gameOverBadge.textContent = isTimeout
+            ? (isVi ? 'HẾT THỜI GIAN (8:00)' : 'TIME LIMIT EXPIRED (8:00)')
+            : (isVi ? 'KẾT QUẢ ĐÁNH GIÁ' : 'ASSESSMENT COMPLETE');
+    }
+
+    if (elements.gameOverTitle) {
+        elements.gameOverTitle.textContent = isTimeout
+            ? (isVi ? 'Hết Giờ — Đánh Giá Hiệu Suất' : "Time's Up — Performance Graded")
+            : (isVi ? 'Hoàn Thành Lượt Thi' : 'Session Complete');
+    }
+
+    if (elements.gameOverSubtitle) {
+        if (isTimeout) {
+            elements.gameOverSubtitle.textContent = isVi
+                ? `Thời gian 8:00 đã kết thúc. Hệ thống tự động ghi nhận và đánh giá kết quả ${state.session.answeredCount} câu hỏi bạn đã làm:`
+                : `The 8:00 time limit has ended. The system has automatically graded the ${state.session.answeredCount} question(s) answered:`;
+        } else {
+            elements.gameOverSubtitle.textContent = isVi
+                ? 'Bạn đã hoàn thành 5 câu hỏi trong thời gian cho phép. Dưới đây là bảng thống kê kết quả:'
+                : 'You have answered 5 questions within the allowed time. Here are your final results:';
+        }
+    }
+
+    const pct = state.session.targetCount > 0 ? Math.round((state.session.correctCount / state.session.targetCount) * 100) : 0;
     if (elements.finalScorePct) {
         elements.finalScorePct.textContent = `${pct}% ${isVi ? 'ĐỘ CHÍNH XÁC' : 'ACCURACY'}`;
+    }
+
+    if (elements.gameOverTimePill) {
+        const elapsedSec = Math.min(state.timer.durationSeconds, state.timer.durationSeconds - state.timer.remainingSeconds);
+        const elapsedMm = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
+        const elapsedSs = String(elapsedSec % 60).padStart(2, '0');
+        if (isTimeout) {
+            elements.gameOverTimePill.textContent = isVi
+                ? '⏱ Thời gian: 08:00 (Hết giờ làm bài)'
+                : "⏱ Time: 08:00 (Time's up)";
+        } else {
+            elements.gameOverTimePill.textContent = isVi
+                ? `⏱ Thời gian hoàn thành: ${elapsedMm}:${elapsedSs} / 08:00`
+                : `⏱ Completed In: ${elapsedMm}:${elapsedSs} / 08:00`;
+        }
     }
 
     if (elements.statAnsweredLbl) elements.statAnsweredLbl.textContent = isVi ? 'Câu hỏi' : 'Questions';
     if (elements.statCorrectLbl) elements.statCorrectLbl.textContent = isVi ? 'Chính xác' : 'Correct';
     if (elements.statWrongLbl) elements.statWrongLbl.textContent = isVi ? 'Chưa đúng' : 'Wrong';
-    if (elements.breakdownTitle) elements.breakdownTitle.textContent = isVi ? 'Chi Tiết 5 Câu Đã Làm' : 'Round Questions Breakdown';
+    if (elements.breakdownTitle) {
+        elements.breakdownTitle.textContent = isVi
+            ? `Chi Tiết ${state.session.history.length} Câu Đã Làm`
+            : `Breakdown of ${state.session.history.length} Completed Question${state.session.history.length === 1 ? '' : 's'}`;
+    }
     if (elements.restartBtnText) elements.restartBtnText.textContent = isVi ? 'Mở Khóa Để Làm Lại' : 'Unlock to Restart';
 
     renderRoundBreakdown();
@@ -2176,6 +2334,7 @@ async function init() {
 
     // 2. Safely initialize controls and event listeners
     try { initTheme(); } catch (err) { console.warn('initTheme error:', err); }
+    try { updateTimerUI(); } catch (err) { console.warn('updateTimerUI error:', err); }
     try { initLockSystem(); } catch (err) { console.warn('initLockSystem error:', err); }
     try { initEvents(); } catch (err) { console.warn('initEvents error:', err); }
 }

@@ -128,6 +128,107 @@ body {
     color: var(--text-primary);
 }
 
+/* ==========================================================================
+   Session Countdown Timer (Top Bar)
+   ========================================================================== */
+
+.session-timer-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-subtle);
+    border-radius: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.session-timer-wrap.is-running {
+    border-color: var(--text-primary);
+    box-shadow: 2px 2px 0px var(--text-primary);
+}
+
+.session-timer-wrap.is-warning {
+    border-color: var(--text-primary);
+    background-color: var(--bg-main);
+    animation: timerPulse 1s infinite alternate ease-in-out;
+}
+
+@keyframes timerPulse {
+    from {
+        box-shadow: 2px 2px 0px var(--text-primary);
+    }
+    to {
+        box-shadow: 0px 0px 8px var(--text-primary);
+    }
+}
+
+.session-timer-wrap.is-expired {
+    background-color: var(--text-primary);
+    color: var(--bg-main);
+    border-color: var(--text-primary);
+    box-shadow: none;
+}
+
+.timer-clock-icon {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-primary);
+    flex-shrink: 0;
+    transition: stroke 0.15s ease;
+}
+
+.session-timer-wrap.is-expired .timer-clock-icon {
+    stroke: var(--bg-main);
+}
+
+.timer-digits-group {
+    display: flex;
+    align-items: baseline;
+}
+
+.timer-digits {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    line-height: 1;
+    min-width: 58px;
+    transition: color 0.15s ease;
+}
+
+.session-timer-wrap.is-expired .timer-digits {
+    color: var(--bg-main);
+}
+
+.timer-status-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-main);
+    color: var(--text-secondary);
+    line-height: 1.2;
+    transition: all 0.15s ease;
+}
+
+.session-timer-wrap.is-running .timer-status-badge {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.session-timer-wrap.is-expired .timer-status-badge {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    border-color: var(--bg-main);
+}
+
 /* Actions in Header */
 .top-actions {
     display: flex;
@@ -1321,6 +1422,21 @@ body {
     color: var(--btn-solid-text);
 }
 
+.game-over-time-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border: 1px dashed var(--border-color);
+    background-color: var(--bg-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1497,11 +1613,15 @@ body {
 
 @media (max-width: 768px) {
     .top-bar {
-        padding: 0 16px;
+        padding: 12px 16px;
         height: auto;
         min-height: 70px;
         flex-wrap: wrap;
         gap: 12px;
+    }
+    .session-timer-wrap {
+        order: 3;
+        margin: 4px auto 0;
     }
     .viewport-stage {
         padding: 30px 20px 40px;

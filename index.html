@@ -19,6 +19,18 @@
                 <span class="brand-title">VGU CYPHER</span>
             </div>
 
+            <!-- Top Center: 8:00 Countdown Timer -->
+            <div class="session-timer-wrap" id="sessionTimerWrap" title="Session Countdown Timer (8:00)">
+                <svg class="timer-clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <div class="timer-digits-group">
+                    <span class="timer-digits" id="sessionTimerDigits">08:00</span>
+                </div>
+                <span class="timer-status-badge" id="sessionTimerBadge">READY</span>
+            </div>
+
             <!-- Top Actions -->
             <div class="top-actions">
                 <button class="btn btn-outline lang-btn" id="langToggleBtn" title="Switch Language (EN / VIE)">
@@ -232,6 +244,7 @@
                     <span class="score-total" id="finalScoreTotal">5</span>
                 </div>
                 <div class="score-pct-badge" id="finalScorePct">0% ACCURACY</div>
+                <div class="game-over-time-pill" id="gameOverTimePill">⏱ 00:00 / 08:00</div>
             </div>
 
             <!-- 3-Column Stats Grid -->
